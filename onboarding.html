@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thoughty | Gamified Thought Development</title>
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/onboarding.css" />
+  </head>
+  <body>
+    <div class="page" id="onboarding">
+      <main>
+        <section>
+          <form>
+            <label for="fname">Full Name:</label>
+            <input
+              type="text"
+              id="fname"
+              placeholder="John Doe"
+              name="fname"
+              value="John Doe"
+              required
+            />
+            <label for="phone">Phone:</label>
+            <input
+              type="text"
+              id="phone"
+              placeholder="+1 123 234 2345"
+              name="phone"
+            />
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="17" name="age" />
+            <label for="stdOrGraud">Are you?</label>
+            <div>
+              <input
+                type="radio"
+                id="student"
+                name="stdOrGraud"
+                value="student"
+                required
+              />
+              <label for="student">Student</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="graduate"
+                name="stdOrGraud"
+                value="graduate"
+                required
+              />
+              <label for="student">graduate</label>
+            </div>
+            <label for="occupation">School/Work:</label>
+            <input
+              type="text"
+              id="occupation"
+              name="occupation"
+              placeholder="WE School/softwareEng.."
+              required
+            />
+
+            <!-- Profile Picture Upload -->
+            <div class="mb-6">
+              <div class="text-center mb-2">
+                <div class="profile-container">
+                  <img
+                    id="profilePreview"
+                    src="./assests/imgs/avatar-user-vector.jpg"
+                    alt="Profile Picture"
+                    class="profile-picture rounded-full border-2 border-gray-200"
+                  />
+
+                  <div class="profile-overlay">
+                    <i class="fas fa-camera text-lg mb-1"></i>
+                    <span class="text-xs">Change</span>
+                  </div>
+
+                  <input type="file" id="profileInput" accept="image/*" />
+                </div>
+              </div>
+
+              <p class="text-xs text-gray-500 text-center">
+                Click to upload profile picture (optional)
+              </p>
+
+              <div
+                id="profileError"
+                class="error-message text-xs text-red-500 text-center mt-1"
+              ></div>
+            </div>
+            <label for="country">Country:</label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              placeholder="United States"
+            />
+
+            <label for="language">Preferred Language:</label>
+            <input
+              type="text"
+              id="language"
+              name="language"
+              placeholder="English"
+            />
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

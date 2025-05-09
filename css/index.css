@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=El+Messiri:wght@400..700&family=Great+Vibes&family=Gupter:wght@400;500;700&family=Habibi&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Montez&family=Mr+Dafoe&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #8b5cf6;
+  --primary-light: #a78bfa;
+  --secondary: #10b981;
+  --accent: #ec4899;
+  --dark: #0f172a;
+  --darker: #020617;
+  --light: #f8fafc;
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --input-br: rgba(25, 39, 70, 0.8);
+  --input-bg:  rgba(19, 28, 47, 0.8);
+
+}
+
+body {
+  /* font-family: "Inter", sans-serif; */
+  font-family: "El Messiri", sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  scroll-behavior: smooth;
+}
+
+#landing .gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+ #landing .gradient-bg {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+ #landing .card {
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+#landing .card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+ #landing .btn-hover {
+  transition: all 0.3s ease;
+}
+
+ #landing .btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+ #landing .fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease-in, transform 0.6s ease;
+  transform: translateY(20px);
+}
+
+ #landing .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+ #landing .grid-pattern {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+ #landing .glass-effect {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+ #landing .feature-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: white;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+ #landing .nav-link {
+  position: relative;
+}
+
+ #landing .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+ #landing .nav-link:hover::after {
+  width: 100%;
+}
+
+ #landing .thought-pod {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1),
+    rgba(236, 72, 153, 0.1)
+  );
+  border-left: 4px solid var(--primary);
+}
+
+ #landing .mind-battle {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
+  border-left: 4px solid var(--secondary);
+}
+
+ #landing .pulse-dot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+ #landing .evolution-stage {
+  position: relative;
+  padding-left: 2rem;
+}
+
+ #landing .evolution-stage::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+}
+
+ #landing .evolution-dot {
+  position: absolute;
+  left: -8px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--darker);
+}

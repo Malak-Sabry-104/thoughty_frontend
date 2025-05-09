@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindVerse 100h Challenge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9fb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .progress-bar {
+      background: #eee;
+      border-radius: 4px;
+      overflow: hidden;
+      height: 10px;
+      flex: 1;
+    }
+    .progress-bar-inner {
+      background: #6b46c1;
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .phase {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .phase-header {
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #f0f0f0;
+    }
+    .phase-content {
+      display: none;
+      padding: 10px;
+      background: #fff;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .muted {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+    .center {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .pulse {
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🧩 MindVerse 100h Challenge</h1>
+    <div id="app"></div>
+    <div class="center">
+      <div style="font-size: 2rem;" class="pulse">🎉</div>
+      <p class="text-lg font-semibold mt-2">Stay synced. Stay inspired 💖</p>
+    </div>
+  </main>
+
+  <script>
+    const PLAN = {
+      backend: [
+        { title: "🚧 Project Architecture & Setup", hours: 6, tasks: ["Django project & apps layout", "PostgreSQL integration", "REST API with DRF", "CORS setup for React"] },
+        { title: "🔐 Authentication & User System", hours: 10, tasks: ["Registration / login (token-based or JWT)", "Anonymous/guest accounts", "Profile model with stats", "Admin user for moderation"] },
+        { title: "💡 Thought Pods & Comments", hours: 15, tasks: ["CRUD for ThoughtPod model", "ThoughtEvolutionStage model", "Comments with reactions", "Voting system"] },
+        { title: "🎮 Gamification Engine", hours: 10, tasks: ["Token tracker per user", "Badge model", "Action-based rewards system", "Leaderboard API"] },
+        { title: "⚔️ Mind Battles System", hours: 10, tasks: ["Battle model", "Voting endpoint", "AI judgment endpoint"] },
+        { title: "🎰 Brainstorm Roulette & Multiverse", hours: 15, tasks: ["Thought Prompt generator (LLM-based)", "Prompt & response logs", "AI remix system"] },
+        { title: "🧙‍♂️ Mind Mentor AI", hours: 10, tasks: ["Analyze user thoughts", "Store insight reports", "Suggest books/content"] },
+        { title: "🔔 Notifications & Timeline API", hours: 8, tasks: ["Notifications", "Thought evolution history API"] },
+        { title: "🚀 Testing, Deployment & Docs", hours: 16, tasks: ["Swagger/OpenAPI docs", "Unit & integration tests", "Docker setup", "Deployment"] }
+      ],
+      frontend: [
+        { title: "🎨 Project Setup & Theme", hours: 8, tasks: ["React + Vite or CRA", "Tailwind CSS or styled-components", "Routing", "Toasts, modals, protected routes"] },
+        { title: "🔐 Auth Pages", hours: 10, tasks: ["Signup/Login/Logout", "Onboarding experience", "Guest mode"] },
+        { title: "🏠 Home Feed & Dashboard", hours: 12, tasks: ["Feed: Trending, New, Recommended", "User dashboard"] },
+        { title: "💭 Thought Pods", hours: 20, tasks: ["Pod listing and filtering", "ThoughtPod detail page", "Evolution timeline viewer"] },
+        { title: "⚔️ Mind Battles", hours: 10, tasks: ["Two-column UI", "Vote on winner", "Result animation", "AI verdict section"] },
+        { title: "🎲 Brainstorm Tools", hours: 12, tasks: ["Roulette spinner + result", "Create pod from idea", "Multiverse UI"] },
+        { title: "🧙‍♀️ Mind Mentor UI", hours: 8, tasks: ["Thinking profile dashboard", "Insights viewer", "AI suggestions carousel"] },
+        { title: "🏅 Gamification Interface", hours: 10, tasks: ["Token balance widget", "Badge grid", "Leaderboard page"] },
+        { title: "✨ Polish & Animations", hours: 10, tasks: ["Framer Motion/GSAP", "Responsive pass", "Dark mode"] }
+      ]
+    };
+
+    const state = {};
+    const app = document.getElementById("app");
+
+    function renderRole(role, label) {
+      const phases = PLAN[role];
+      const container = document.createElement("div");
+      const title = document.createElement("h2");
+      title.textContent = label;
+      container.appendChild(title);
+
+      const progressWrapper = document.createElement("div");
+      progressWrapper.style.display = "flex";
+      progressWrapper.style.alignItems = "center";
+      progressWrapper.style.gap = "1rem";
+      progressWrapper.style.marginBottom = "1rem";
+
+      const totalTasks = phases.reduce((sum, p) => sum + p.tasks.length, 0);
+      const progressBar = document.createElement("div");
+      progressBar.className = "progress-bar";
+      const progressBarInner = document.createElement("div");
+      progressBarInner.className = "progress-bar-inner";
+      progressBar.appendChild(progressBarInner);
+
+      const counter = document.createElement("span");
+      counter.textContent = `0/${totalTasks}`;
+      progressWrapper.append(progressBar, counter);
+      container.appendChild(progressWrapper);
+
+      function updateProgress() {
+        const completed = Object.values(state).filter(Boolean).length;
+        const percentage = (completed / totalTasks) * 100;
+        progressBarInner.style.width = `${percentage}%`;
+        counter.textContent = `${completed}/${totalTasks}`;
+      }
+
+      phases.forEach((phase, idx) => {
+        const item = document.createElement("div");
+        item.className = "phase";
+
+        const trigger = document.createElement("div");
+        trigger.className = "phase-header";
+        trigger.textContent = `${phase.title} (${phase.hours}h)`;
+
+        const content = document.createElement("div");
+        content.className = "phase-content";
+
+        const ul = document.createElement("ul");
+        phase.tasks.forEach((task, tidx) => {
+          const id = `${role}-${idx}-${tidx}`;
+          const li = document.createElement("li");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = !!state[id];
+          const label = document.createElement("span");
+          label.textContent = task;
+          if (state[id]) label.classList.add("muted");
+
+          checkbox.addEventListener("change", () => {
+            state[id] = checkbox.checked;
+            label.classList.toggle("muted", checkbox.checked);
+            updateProgress();
+          });
+
+          li.append(checkbox, label);
+          ul.appendChild(li);
+        });
+
+        content.appendChild(ul);
+        item.append(trigger, content);
+
+        trigger.addEventListener("click", () => {
+          content.style.display = content.style.display === "block" ? "none" : "block";
+        });
+
+        container.appendChild(item);
+      });
+
+      updateProgress();
+      return container;
+    }
+
+    app.appendChild(renderRole("backend", "🧠 Khaled – Backend"));
+    app.appendChild(renderRole("frontend", "💖 Malak – Frontend"));
+  </script>
+</body>
+</html>

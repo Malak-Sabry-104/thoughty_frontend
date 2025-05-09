@@ -1,0 +1,240 @@
+📁 1. Project Setup & Global Theme
+
+Directory Structure:
+
+mindverse/
+├── index.html
+├── style.css
+├── script.js
+├── assets/ (images/icons/logos)
+├── components/ (optional HTML fragments)
+
+Setup Notes:
+
+index.html will contain the home layout with embedded or modular sections
+
+style.css holds global styling using CSS variables and responsive rules
+
+script.js manages DOM interactivity, event listeners, and local storage state
+
+Styling Recommendations:
+
+Use CSS variables for colors (e.g., --primary, --muted, --accent)
+
+Dark mode toggle using class="dark" on <body>
+
+Font: Use a readable sans-serif like 'Inter' or 'Poppins'
+
+Box shadows, hover transitions, and border-radius (8–16px) for smooth visuals
+
+Flexbox & Grid for layouts
+
+✨ 2. Authentication Pages (signup.html / login.html / onboarding.html)
+
+Signup/Login:
+
+Centered form in a card with soft shadow
+
+Fields: email, password (and username for signup)
+
+Validation: empty fields, email format, minimum password length
+
+Buttons: “Sign Up” / “Log In”
+
+Show/hide password toggle
+
+Onboarding (optional):
+
+Slide-based or multi-step modal (use JS for step progression)
+
+Collect interests, preferred thinking modes, or usage goals
+
+Guest Mode:
+
+Button: “Continue as Guest” → redirects to dashboard with limited functionality
+
+🎛️ 3. Home Feed & Dashboard (dashboard.html)
+
+Header:
+
+Logo on left, profile avatar on right
+
+Navigation menu with icons: Feed, Dashboard, Battles, Brainstorm, Gamify
+
+Main Feed:
+
+Tabs or filters: Trending, New, Recommended
+
+Feed cards with pod title, author, reactions, and "Explore" button
+
+Each card styled with soft gradient background
+
+User Dashboard Section:
+
+User's thought stats (Pods created, Evolution points, Badges earned)
+
+Quick actions: “Create Pod”, “Start Battle”, “Roulette”
+
+💭 4. Thought Pods
+
+ThoughtPod Listing:
+
+Grid/list view of existing pods
+
+Each card shows title, progress bar, and evolution stage
+
+Pod Detail View:
+
+Title + stage info
+
+Editable sections for each stage (use <textarea> or contentEditable)
+
+Buttons: Save, Submit for Feedback, Next Stage
+
+Comment section with emoji reactions
+
+Timeline Viewer:
+
+Visual stepper component or vertical list showing past evolution stages
+
+Clickable steps to view previous versions
+
+⚔️ 5. Mind Battles
+
+Battle UI:
+
+Split-screen layout: Pod A vs Pod B
+
+Titles, summaries, and optional visual thumbnails
+
+Buttons: “Vote A”, “Vote B”, “Let AI Decide”
+
+Vote Animation:
+
+Confetti or fade effect on vote
+
+Show real-time vote count or delay for suspense
+
+AI Verdict Section:
+
+After voting, show AI summary or feedback using a styled message box
+
+🎲 6. Brainstorm Tools
+
+Roulette Spinner:
+
+Circular spinner with colored sections (ideas, prompts)
+
+JS for spin animation and result selection
+
+“Spin Again” and “Use This” buttons
+
+Create Pod from Idea:
+
+Pre-filled form with the roulette prompt
+
+Editable fields: title, tags, description
+
+Multiverse UI:
+
+Grid of AI-generated variations of the original idea
+
+Users can pick one to start a pod or remix again
+
+🧙‍♀️ 7. Mind Mentor UI
+
+Thinking Profile Dashboard:
+
+Visual representation of most used pod categories, AI tags, progress
+
+Charts can be implemented with canvas or simple bar indicators
+
+Insights Viewer:
+
+Scrollable cards or accordion showing insights from past pods
+
+Book/content suggestions with links or “Save to Library”
+
+AI Carousel:
+
+Auto-scrolling or manual carousel with thought triggers, quotes, and ideas
+
+🏅 8. Gamification Interface
+
+Token Widget:
+
+Small floating UI showing current token balance
+
+Click to view rewards store or achievements
+
+Badge Grid:
+
+Grid layout of unlocked badges with color
+
+Locked ones grayed out with tooltip: “Earn by...”
+
+Leaderboard:
+
+Table or ranked cards with username, avatar, and score
+
+Pagination or scrolling
+
+🎨 9. Polish & Animations
+
+Animations:
+
+Use CSS animations or JS on-scroll reveal (e.g., fade-in, slide-up)
+
+Transition hover states for buttons and cards
+
+Dark/light toggle (with <body class="dark">)
+
+Responsiveness:
+
+Use @media queries for layout: mobile-first
+
+Collapsible nav menu on mobile with hamburger icon
+
+Framer Motion/GSAP Alternative:
+
+For spinner, progress, and hover effects, use transform: rotate(), scale(), translate() in CSS with transition-duration
+
+🔔 10. Notifications & Timeline
+
+Notifications Panel:
+
+Bell icon with red dot if new
+
+Dropdown list of recent events: "New comment on pod", "Battle result", "Milestone reached"
+
+Thought Timeline API:
+
+Timeline layout: horizontal scroll or vertical stack
+
+Each node = evolution stage or significant action
+
+Tooltips or modal on click to show detail
+
+🧪 11. Local Storage & State (JS Only)
+
+Use localStorage for:
+
+Remembering checked tasks
+
+Persisting dark mode setting
+
+Temporary drafts or last-opened pod
+
+User session (if not using backend yet)
+
+Example:
+
+const savedTasks = JSON.parse(localStorage.getItem("checkedTasks")) || {};
+
+📄 12. Deployment Tips
+
+Use GitHub Pages, Netlify, or Vercel for static deployment
+
+Optimize images (WebP preferred)
+
+Minify CSS/JS for production

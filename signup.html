@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thoughty | Gamified Thought Development</title>
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/signup.css" />
+  </head>
+  <body>
+    <div class="page" id="signup">
+      <main>
+        <section class="grid-pattern">
+          <div class="toggle-container" id="toggleBtn">
+            <div class="labels">
+              <span>Log In</span>
+              <span>Sign Up</span>
+            </div>
+            <div class="toggle-slider"></div>
+          </div>
+
+          <div class="card-wrapper">
+            <div class="form-card" id="formCard">
+              <!-- Login Face -->
+              <form class="form-face front">
+                <h2>Login to your account</h2>
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="john.doe@example.com"
+                  required
+                  class="input-group"
+                />
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="john_doe123"
+                  class="input-group"
+                />
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="*********"
+                  minlength="8"
+                  required
+                  class="input-group"
+                />
+                <a href="#" class="forgot-password">Forgot your password?</a>
+                <button type="submit" class="submit-form">Login</button>
+              </form>
+
+              <!-- Sign Up Face -->
+              <form class="form-face back">
+                <h2>Create Your Account</h2>
+                <p class="sub-title">Let's get started.</p>
+                <label for="email2">Email</label>
+                <input
+                  type="email"
+                  id="email2"
+                  placeholder="john.doe@example.com"
+                  required
+                  class="input-group"
+                />
+                <label for="username2">Username</label>
+                <input
+                  type="text"
+                  id="username2"
+                  placeholder="john_doe123"
+                  class="input-group"
+                />
+                <label for="password2">Password</label>
+                <input
+                  type="password"
+                  id="password2"
+                  placeholder="*********"
+                  minlength="8"
+                  required
+                  class="input-group"
+                />
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="*********"
+                  minlength="8"
+                  required
+                  class="input-group"
+                />
+                <div class="checkbox-container">
+                  <label class="terms-wrapper">
+                    <input type="checkbox" id="check" required />
+                    <span
+                      >I agree to the <a href="#">Terms of Service</a> and
+                      <a href="#">Privacy Policy</a></span
+                    >
+                  </label>
+                </div>
+                <button type="submit" class="submit-form">Create Account</button>
+                <div class="social-signin">
+                  <p>Or SignIn with</p>
+                  <div class="icons">
+                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./js/signup.js"></script>
+  </body>
+</html>
