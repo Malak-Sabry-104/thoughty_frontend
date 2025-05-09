@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/signup.css" />
   </head>
   <body>
-    <div class="page" id="signup">
+    <div class="auth-page" id="signup">
       <main>
         <section class="grid-pattern">
           <div class="toggle-container" id="toggleBtn">
@@ -30,7 +30,6 @@
                   type="email"
                   id="email"
                   placeholder="john.doe@example.com"
-                  required
                   class="input-group"
                 />
                 <label for="username">Username</label>
@@ -46,7 +45,6 @@
                   id="password"
                   placeholder="*********"
                   minlength="8"
-                  required
                   class="input-group"
                 />
                 <a href="#" class="forgot-password">Forgot your password?</a>
@@ -62,7 +60,6 @@
                   type="email"
                   id="email2"
                   placeholder="john.doe@example.com"
-                  required
                   class="input-group"
                 />
                 <label for="username2">Username</label>
@@ -78,7 +75,6 @@
                   id="password2"
                   placeholder="*********"
                   minlength="8"
-                  required
                   class="input-group"
                 />
                 <label for="confirmPassword">Confirm Password</label>
@@ -87,19 +83,20 @@
                   id="confirmPassword"
                   placeholder="*********"
                   minlength="8"
-                  required
                   class="input-group"
                 />
                 <div class="checkbox-container">
                   <label class="terms-wrapper">
-                    <input type="checkbox" id="check" required />
+                    <input type="checkbox" id="check" />
                     <span
                       >I agree to the <a href="#">Terms of Service</a> and
                       <a href="#">Privacy Policy</a></span
                     >
                   </label>
                 </div>
-                <button type="submit" class="submit-form">Create Account</button>
+                <button type="submit" class="submit-form" id="create">
+                  Create Account
+                </button>
                 <div class="social-signin">
                   <p>Or SignIn with</p>
                   <div class="icons">

@@ -1,3 +1,6 @@
+#onboarding section {
+  height: 115vh;
+}
 #onboarding .profile-container {
   position: relative;
   width: 100px;
@@ -10,7 +13,11 @@
   height: 100%;
   object-fit: cover;
   transition: all 0.3s ease;
+  border-radius: 100%;
+  border: 2px;
   cursor: pointer;
+  color: rgb(111, 111, 111);
+  margin: 15px 0 0 0;
 }
 
 #onboarding .profile-overlay {
@@ -29,8 +36,26 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  margin: 15px 0 0 0;
 }
-
+#onboarding .profile-overlay {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  margin-bottom: 0.25rem;
+}
+#onboarding .profile-overlay span {
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem;
+}
+#onboarding .hint {
+  color: rgb(111, 111, 111);
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem;
+  margin: 10px 0 0 0;
+  padding-top: 0.75rem /* 12px */;
+  padding-bottom: 0.75rem;
+  text-align: center;
+}
 #onboarding .profile-container:hover .profile-overlay {
   opacity: 1;
 }
@@ -45,10 +70,78 @@
 
 #onboarding .error-message {
   max-height: 0;
+  color: red;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem;
+  text-align: center;
+  margin-top: 0.25rem;
 }
 
 #onboarding .error-message.active {
   max-height: 20px;
+}
+
+.form-container {
+  width: 40%;
+}
+.select-selected {
+  background-color: transparent;
+  color: white;
+  padding: 12px;
+  border: 1px solid var(--input-br);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.select-items {
+  position: absolute;
+  background-color: rgba(19, 28, 47, 0.993);
+
+  border: 1px solid white;
+  border-radius: 6px;
+  z-index: 9999;
+  width: 100%;
+  margin-top: -2px;
+  bottom: 100%;
+  left: 0;
+  display: none;
+}
+
+.select-items div {
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.select-items div:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.select-arrow {
+  float: right;
+  margin-left: 8px;
+}
+.custom-select {
+  position: relative;
+  width: 540px;
+}
+#onboarding .submit-form {
+  margin: 20px 0 16px 0;
+}
+
+.radio-group {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
 }

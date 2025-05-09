@@ -1,7 +1,5 @@
-@import url('./index.css');
-
 /* Center & layout */
-#signup section {
+.auth-page section {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +8,7 @@
 }
 
 /* Flip-card wrapper */
-.card-wrapper {
+.auth-page .card-wrapper {
   perspective: 1000px;
   width: 100%;
   max-width: 400px;
@@ -19,7 +17,7 @@
 }
 
 /* The card itself */
-.form-card {
+.auth-page .form-card {
   width: 100%;
   height: 100%;
   position: relative;
@@ -28,15 +26,18 @@
 }
 
 /* Flip when active */
-.form-card.flipped {
+.auth-page .form-card.flipped {
   transform: rotateY(180deg);
+}
+.auth-page .form-face .front {
+  height: 100%;
 }
 
 /* Both faces */
-.form-face {
+.auth-page .form-face {
   position: absolute;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   padding: 30px 20px;
   box-sizing: border-box;
   backface-visibility: hidden;
@@ -51,18 +52,18 @@
 }
 
 /* Back face rotated */
-.form-face.back {
+.auth-page .form-face.back {
   transform: rotateY(180deg);
 }
 
 /* Typography */
-#signup form h2 {
+.auth-page form h2 {
   text-align: center;
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: normal;
 }
-#signup form .sub-title {
+.auth-page form .sub-title {
   text-align: center;
   font-size: 13px;
   font-style: italic;
@@ -70,7 +71,7 @@
 }
 
 /* Inputs & button */
-.input-group {
+.auth-page .input-group {
   background: rgba(19, 28, 47, 0.8);
   border: 2px solid rgba(25, 39, 70, 0.8);
   border-radius: 10px;
@@ -80,15 +81,16 @@
   transition: background 0.3s ease;
   width: 100%;
 }
-.input-group:focus {
+.auth-page .input-group:focus {
   background: transparent;
+  outline: none;
 }
-.input-group::placeholder {
+.auth-page .input-group::placeholder {
   color: rgba(221, 221, 221, 0.72);
   font-size: 12px;
 }
 
-.submit-form {
+.auth-page .submit-form {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -99,43 +101,43 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
-.submit-form:hover {
+.auth-page .submit-form:hover {
   background: white;
   color: var(--dark);
 }
 
 /* Checkbox & social */
-.checkbox-container {
+.auth-page .checkbox-container {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
-.terms-wrapper {
+.auth-page .terms-wrapper {
   display: flex;
   align-items: center;
   gap: 5px;
   color: white;
   font-size: 14px;
 }
-.terms-wrapper a {
+.auth-page .terms-wrapper a {
   color: #a0a0ff;
   text-decoration: none;
 }
-.terms-wrapper a:hover {
+.auth-page .terms-wrapper a:hover {
   text-decoration: underline;
 }
 
-.social-signin {
+.auth-page .social-signin {
   text-align: center;
   margin-top: 10px;
 }
-.social-signin .icons {
+.auth-page .social-signin .icons {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 5px;
 }
-.social-signin .icons i {
+.auth-page .social-signin .icons i {
   padding: 12px;
   border-radius: 14px;
   background-color: var(--input-bg);
@@ -143,13 +145,13 @@
   border: 2px solid transparent;
   transition: all 0.3s ease;
 }
-.social-signin .icons i:hover {
+.auth-page .social-signin .icons i:hover {
   background: transparent;
   border-color: var(--input-bg);
 }
 
 /* Toggle switch */
-.toggle-container {
+.auth-page .toggle-container {
   position: relative;
   width: 140px;
   height: 40px;
@@ -162,7 +164,7 @@
   cursor: pointer;
   margin-bottom: 20px;
 }
-.toggle-slider {
+.auth-page .toggle-slider {
   position: absolute;
   width: 60px;
   height: 30px;
@@ -172,10 +174,11 @@
   left: 5px;
   transition: left 0.3s ease;
 }
-.toggle-container.active .toggle-slider {
+
+.auth-page .toggle-container.active .toggle-slider {
   left: 75px;
 }
-.labels {
+.auth-page .labels {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -186,13 +189,14 @@
 }
 
 /* Forgot link */
-.forgot-password {
+
+.auth-page .forgot-password {
   display: block;
   color: #a0a0ff;
   margin-bottom: 10px;
   text-decoration: none;
 }
-.forgot-password:hover {
+.auth-page .forgot-password:hover {
   text-decoration: underline;
 }
 
@@ -205,4 +209,42 @@
   .form-face {
     padding: 20px;
   }
+}
+
+/* Error message style */
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Improve spacing between form fields */
+.input-group {
+  margin-bottom: 0.75rem;
+}
+
+/* Fix checkbox label and error alignment */
+.terms-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.checkbox-container .error-message {
+  margin-left: 1.5rem; /* align under the label text */
+  margin-top: 0.25rem;
+}
+
+.input-error {
+  background-color: rgba(255, 107, 107, 0.05);
 }

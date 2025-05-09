@@ -39,18 +39,6 @@ profileInput.addEventListener("change", (e) => {
   }
 });
 
-// Form submission
-signupForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Here you would typically send the form data to your server
-  // Including the profile picture if one was selected
-  console.log("Form submitted");
-
-  // For demo purposes, just show an alert
-  alert("Account created successfully!");
-});
-
 function showProfileError(message) {
   profileError.textContent = message;
   profileError.classList.add("active");
@@ -61,3 +49,29 @@ function hideProfileError() {
   profileError.textContent = "";
   profileError.classList.remove("active");
 }
+
+const selected = document.querySelector(".select-selected");
+const items = document.querySelector(".select-items");
+
+selected.addEventListener("click", () => {
+  items.style.display = items.style.display === "block" ? "none" : "block";
+});
+
+document.querySelectorAll(".select-items div").forEach((option) => {
+  option.addEventListener("click", () => {
+    selected.innerHTML = `${option.textContent} <span class="select-arrow">▼</span>`;
+    items.style.display = "none";
+  });
+});
+
+// Optional: click outside to close dropdown
+window.addEventListener("click", (e) => {
+  if (!e.target.closest(".custom-select")) {
+    items.style.display = "none";
+  }
+});
+
+document.querySelector("#save").addEventListener("click", function (event) {
+    event.preventDefault();
+    window.location.href = "/";
+  })

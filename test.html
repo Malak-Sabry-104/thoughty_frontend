@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Gender Dropdown</title>
+  <style>
+    body {
+      background-color: #0e0e1a;
+    ;
+      color: white;
+    }
+
+    /* .custom-select {
+      position: relative;
+      width: 220px;
+    } */
+
+    .select-selected {
+      background-color: transparent;
+      color: white;
+      padding: 12px;
+      border: 1px solid white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .select-items {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid white;
+      border-radius: 6px;
+      z-index: 99;
+      width: 100%;
+      margin-top: 2px;
+      display: none;
+    }
+
+    .select-items div {
+      color: white;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .select-items div:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .select-arrow {
+      float: right;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="custom-select">
+  <div class="select-selected">Select your gender <span class="select-arrow">▼</span></div>
+  <div class="select-items">
+    <div>Female</div>
+    <div>Male</div>
+    <div>Prefer not to say</div>
+  </div>
+</div>
+
+<script>
+  const selected = document.querySelector(".select-selected");
+  const items = document.querySelector(".select-items");
+
+  selected.addEventListener("click", () => {
+    items.style.display = items.style.display === "block" ? "none" : "block";
+  });
+
+  document.querySelectorAll(".select-items div").forEach(option => {
+    option.addEventListener("click", () => {
+      selected.innerHTML = `${option.textContent} <span class="select-arrow">▼</span>`;
+      items.style.display = "none";
+    });
+  });
+
+  // Optional: click outside to close dropdown
+  window.addEventListener("click", (e) => {
+    if (!e.target.closest(".custom-select")) {
+      items.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</html>

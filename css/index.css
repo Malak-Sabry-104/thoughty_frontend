@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=El+Messiri:wght@400..700&family=Great+Vibes&family=Gupter:wght@400;500;700&family=Habibi&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Montez&family=Mr+Dafoe&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 * {
-  padding: 0;
+  /* padding: 0; */
   margin: 0;
   box-sizing: border-box;
 }
@@ -15,8 +15,7 @@
   --light: #f8fafc;
   --card-bg: rgba(15, 23, 42, 0.8);
   --input-br: rgba(25, 39, 70, 0.8);
-  --input-bg:  rgba(19, 28, 47, 0.8);
-
+  --input-bg: rgba(19, 28, 47, 0.8);
 }
 
 body {
@@ -34,11 +33,11 @@ body {
   color: transparent;
 }
 
- #landing .gradient-bg {
+#landing .gradient-bg {
   background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
- #landing .card {
+#landing .card {
   transition: all 0.3s ease;
   background: var(--card-bg);
   backdrop-filter: blur(10px);
@@ -52,22 +51,22 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
- #landing .btn-hover {
+#landing .btn-hover {
   transition: all 0.3s ease;
 }
 
- #landing .btn-hover:hover {
+#landing .btn-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
- #landing .fade-in {
+#landing .fade-in {
   opacity: 0;
   transition: opacity 0.6s ease-in, transform 0.6s ease;
   transform: translateY(20px);
 }
 
- #landing .fade-in.visible {
+#landing .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -88,7 +87,7 @@ body {
   }
 }
 
- #landing .grid-pattern {
+#landing .grid-pattern {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.02) 1px,
       transparent 1px
@@ -97,13 +96,13 @@ body {
   background-size: 40px 40px;
 }
 
- #landing .glass-effect {
+#landing .glass-effect {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
- #landing .feature-icon {
+#landing .feature-icon {
   width: 60px;
   height: 60px;
   display: flex;
@@ -117,11 +116,11 @@ body {
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
- #landing .nav-link {
+#landing .nav-link {
   position: relative;
 }
 
- #landing .nav-link::after {
+#landing .nav-link::after {
   content: "";
   position: absolute;
   width: 0;
@@ -132,11 +131,11 @@ body {
   transition: width 0.3s ease;
 }
 
- #landing .nav-link:hover::after {
+#landing .nav-link:hover::after {
   width: 100%;
 }
 
- #landing .thought-pod {
+#landing .thought-pod {
   background: linear-gradient(
     135deg,
     rgba(139, 92, 246, 0.1),
@@ -145,7 +144,7 @@ body {
   border-left: 4px solid var(--primary);
 }
 
- #landing .mind-battle {
+#landing .mind-battle {
   background: linear-gradient(
     135deg,
     rgba(16, 185, 129, 0.1),
@@ -154,7 +153,7 @@ body {
   border-left: 4px solid var(--secondary);
 }
 
- #landing .pulse-dot {
+#landing .pulse-dot {
   animation: pulse 2s infinite;
 }
 
@@ -170,12 +169,12 @@ body {
   }
 }
 
- #landing .evolution-stage {
+#landing .evolution-stage {
   position: relative;
   padding-left: 2rem;
 }
 
- #landing .evolution-stage::before {
+#landing .evolution-stage::before {
   content: "";
   position: absolute;
   left: 0;
@@ -185,7 +184,7 @@ body {
   background: linear-gradient(to bottom, var(--primary), var(--accent));
 }
 
- #landing .evolution-dot {
+#landing .evolution-dot {
   position: absolute;
   left: -8px;
   top: 6px;
