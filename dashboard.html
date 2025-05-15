@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thoughty | Gamified Thought Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b5cf6",
+            "primary-light": "#a78bfa",
+            secondary: "#10b981",
+            accent: "#ec4899",
+            dark: "#0f172a",
+            darker: "#020617",
+            light: "#f8fafc",
+            "card-bg": "rgba(15, 23, 42, 0.8)",
+            "input-br": "rgba(25, 39, 70, 0.8)",
+            "input-bg": "rgba(19, 28, 47, 0.8)",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+
+<body class="gradient-bg min-h-screen text-light font-sans">
+  <nav class="sticky top-0 z-50 bg-dark/80 backdrop-blur-sm border-b border-input-br h-16 flex items-center">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+          <i class="fas fa-brain text-xl"></i>
+        </div>
+        <h1 class="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Thoughty
+        </h1>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <div
+            class="w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+            <i class="fas fa-user text-primary-light"></i>
+          </div>
+          <span
+            class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center text-xs">3
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Three Panel Layout -->
+    <div class="three-panel-layout">
+      <!-- Left Menu Panel -->
+      <div class="left bg-dark/80 border-r border-input-br hidden-mobile">
+        <nav class="p-4 space-y-1">
+          <a href="#" class="menu-item active flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-chart-line text-primary w-6 text-center"></i>
+            <span class="menu-text">Dashboard</span>
+          </a>
+
+          <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-stream text-primary-light w-6 text-center"></i>
+            <span class="menu-text">Feed</span>
+          </a>
+          <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-trophy text-primary-light w-6 text-center"></i>
+            <span class="menu-text">Battles</span>
+          </a>
+          <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-lightbulb text-primary-light w-6 text-center"></i>
+            <span class="menu-text">Brainstorm</span>
+          </a>
+          <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-gamepad text-primary-light w-6 text-center"></i>
+            <span class="menu-text">Gamify</span>
+          </a>
+          <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-users text-primary-light w-6 text-center"></i>
+            <span class="menu-text">Community</span>
+          </a>
+          <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+            <i class="fas fa-cog text-primary-light w-6 text-center"></i>
+            <span class="menu-text">Settings</span>
+          </a>
+
+          <div class="pt-8 mt-8 border-t border-input-br">
+            <h3 class="text-xs uppercase text-primary-light px-3 mb-3 menu-text">
+              Your Pods
+            </h3>
+            <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+              <i class="fas fa-atom text-secondary w-6 text-center"></i>
+              <span class="menu-text">Quantum Thoughts</span>
+            </a>
+            <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+              <i class="fas fa-robot text-accent w-6 text-center"></i>
+              <span class="menu-text">AI Ethics</span>
+            </a>
+            <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg">
+              <i class="fas fa-paint-brush text-purple-400 w-6 text-center"></i>
+              <span class="menu-text">Creative Mind</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      
+    </div>
+  </main>
+</body>
+
+</html>

@@ -91,10 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
       valid = false;
     }
 
-    if (!valid) e.preventDefault();
+    e.preventDefault()
+    if (!valid) {
+    } else {
+      window.location.href = "/onboarding.html";
+    }
   });
 });
-document.querySelector("#create").addEventListener("click", function (event) {
-    event.preventDefault();
-    window.location.href = "/onboarding.html";
-  });
