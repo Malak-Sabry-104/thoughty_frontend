@@ -112,7 +112,88 @@
         </nav>
       </div>
 
-      
+      <!-- Main Content Panel -->
+      <div class="p-6 overflow-y-auto">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-6">Thought Pods</h2>
+
+          <!-- Feed Tabs -->
+          <div class="flex border-b border-input-br mb-6">
+            <button class="tab-active px-4 py-2 font-medium">Trending</button>
+            <button class="px-4 py-2 font-medium text-primary-light hover:text-primary transition">
+              New
+            </button>
+            <button class="px-4 py-2 font-medium text-primary-light hover:text-primary transition">
+              Recommended
+            </button>
+          </div>
+
+          <!-- Search and Filter -->
+          <div class="flex flex-col md:flex-row gap-4 mb-6">
+            <div class="relative flex-1">
+              <input type="text" placeholder="Search pods..."
+                class="w-full bg-input-bg border border-input-br rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary-light" />
+              <i class="fas fa-search absolute left-3 top-3 text-primary-light"></i>
+            </div>
+            <select
+              class="bg-input-bg border border-input-br rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-primary-light">
+              <option>All Categories</option>
+              <option>Technology</option>
+              <option>Philosophy</option>
+              <option>Science</option>
+              <option>Art</option>
+            </select>
+          </div>
+
+          <!-- Feed Cards -->
+          <div class="space-y-6">
+            <!-- Card 1 -->
+            <div class="card-gradient rounded-xl p-6 border border-input-br transition hover:border-primary-light">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-xl font-bold mb-1">
+                    The Future of AI Consciousness
+                  </h3>
+                  <p class="text-primary-light text-sm">
+                    by <span class="text-secondary">NeuroExplorer</span> • 2
+                    hours ago
+                  </p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="bg-dark/50 px-3 py-1 rounded-full text-sm flex items-center">
+                    <i class="fas fa-fire text-accent mr-1"></i> 124
+                  </span>
+                  <span class="bg-dark/50 px-3 py-1 rounded-full text-sm flex items-center">
+                    <i class="fas fa-comment text-primary-light mr-1"></i> 42
+                  </span>
+                </div>
+              </div>
+              <p class="text-primary-light mb-6">
+                Exploring the ethical implications and technological
+                breakthroughs that might lead to artificial consciousness in our
+                lifetime...
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-2">
+                  <span class="bg-dark/50 px-3 py-1 rounded-full text-sm">#AI</span>
+                  <span class="bg-dark/50 px-3 py-1 rounded-full text-sm">#Ethics</span>
+                  <span class="bg-dark/50 px-3 py-1 rounded-full text-sm">#Future</span>
+                </div>
+                <button
+                  class="bg-primary hover:bg-primary-light px-4 py-2 rounded-lg font-medium transition flex items-center">
+                  Explore <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+
+        </div>
+      </div>
     </div>
   </main>
 </body>
