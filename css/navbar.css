@@ -109,7 +109,8 @@
 }
 
 .dropdown-item i,
-.dropdown-item span {
+.dropdown-item span , 
+.dropdown-item a{
   color: var(--primary);
 }
 
@@ -117,10 +118,7 @@
   background: #352c4eb0;
 }
 
-.divider {
-  height: 1px;
-  margin: 0.25rem 0;
-}
+
 
 /* Header Section */
 .dropdown-header {
