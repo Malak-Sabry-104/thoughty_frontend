@@ -1,115 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thoughty | Gamified Thought Development</title>
-    <link rel="stylesheet" href="./css/all.min.css" />
-    <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./css/signup.css" />
-  </head>
-  <body>
-    <div class="auth-page" id="signup">
-      <main>
-        <section class="grid-pattern">
-          <div class="toggle-container" id="toggleBtn">
-            <div class="labels">
-              <span>Log In</span>
-              <span>Sign Up</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thoughty | Gamified Thought Development</title>
+  <link rel="stylesheet" href="./css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/index.css" />
+
+  <link rel="stylesheet" href="./css/signup.css" />
+  <link rel="stylesheet" href="./css/navbar.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b5cf6",
+            "primary-light": "#a78bfa",
+            secondary: "#10b981",
+            accent: "#ec4899",
+            dark: "#0f172a",
+            darker: "#020617",
+            light: "#f8fafc",
+            "card-bg": "rgba(15, 23, 42, 0.8)",
+            "input-br": "rgba(25, 39, 70, 0.8)",
+            "input-bg": "rgba(19, 28, 47, 0.8)",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+  
+  <div class="auth-page" id="signup">
+    <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass-effect">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a href="/">
+            <img src="./assests/imgs/temt logo.jpg" class="w-10 mx-3">
+          </a>
+          <span class="text-xl font-bold text-white">Thoughty</span>
+        </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-8 ">
+
+            <!-- nav-links -->
+            <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+              Explore
+            </a>
+            <a href="/brainstorm.html"
+              class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+              Brainstorm
+            </a>
+            <a href="/battles.html"
+              class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+              Battles
+            </a>
+            <a href="/about.html"
+              class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+              About
+            </a>
+            <a href="/contact.html"
+              class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+              Contact
+            </a>
+
+            <!-- signin & sign up btns -->
+            <a href="/signup.html?request=signin"
+              class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+              <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In
+            </a>
+            <a href="/signup.html?request=signup"
+              class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+              <i class="fa-solid fa-user-plus mr-2"></i> Sign Up
+
+            </a>
+
+            <!-- Hover-Activated Gradient Border Button -->
+            <div class="guest-btn-container">
+              <a href="/guest" class="guest-btn">
+                <i class="fa-solid fa-user-clock mr-2"></i> guest mode
+              </a>
             </div>
-            <div class="toggle-slider"></div>
-          </div>
 
-          <div class="card-wrapper">
-            <div class="form-card" id="formCard">
-              <!-- Login Face -->
-              <form class="form-face front">
-                <h2>Login to your account</h2>
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="john.doe@example.com"
-                  class="input-group"
-                />
-                <label for="username">Username</label>
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="john_doe123"
-                  class="input-group"
-                />
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="*********"
-                  minlength="8"
-                  class="input-group"
-                />
-                <a href="#" class="forgot-password">Forgot your password?</a>
-                <button type="submit" class="submit-form">Login</button>
-              </form>
-
-              <!-- Sign Up Face -->
-              <form class="form-face back">
-                <h2>Create Your Account</h2>
-                <p class="sub-title">Let's get started.</p>
-                <label for="email2">Email</label>
-                <input
-                  type="email"
-                  id="email2"
-                  placeholder="john.doe@example.com"
-                  class="input-group"
-                />
-                <label for="username2">Username</label>
-                <input
-                  type="text"
-                  id="username2"
-                  placeholder="john_doe123"
-                  class="input-group"
-                />
-                <label for="password2">Password</label>
-                <input
-                  type="password"
-                  id="password2"
-                  placeholder="*********"
-                  minlength="8"
-                  class="input-group"
-                />
-                <label for="confirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  placeholder="*********"
-                  minlength="8"
-                  class="input-group"
-                />
-                <div class="checkbox-container">
-                  <label class="terms-wrapper">
-                    <input type="checkbox" id="check" />
-                    <span
-                      >I agree to the <a href="#">Terms of Service</a> and
-                      <a href="#">Privacy Policy</a></span
-                    >
-                  </label>
+            <!-- notification center -->
+            <div class="flex items-center space-x-4 notif-center">
+              <div class="relative">
+                <div
+                  class="w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+                  <i class="fa-solid fa-bell  text-primary-light"></i>
                 </div>
-                <button type="submit" class="submit-form" id="create">
-                  Create Account
-                </button>
-                <div class="social-signin">
-                  <p>Or SignIn with</p>
-                  <div class="icons">
-                    <a href="#"><i class="fa-brands fa-google"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <span
+                  class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center text-xs">3</span>
+              </div>
+            </div>
+
+            <!-- create pod button -->
+            <a href="/new-pod"
+              class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+              <i class="fa-solid fa-plus mr-2"></i>
+              create Pod
+            </a>
+
+            <!-- dropdown user  -->
+            <div class="profile-dropdown">
+              <button class="avatar-btn">
+                <img src="./assests/imgs/avatar-user-vector.jpg" class="avatar-img" alt="Profile">
+              </button>
+
+              <div class="dropdown-content">
+                <div class="dropdown-header">
+                  <img src="./assests/imgs/avatar-user-vector.jpg" class="header-avatar" alt="Profile">
+                  <div class="user-info">
+                    <div class="user-name">Alexandra Chen</div>
+                    <div class="user-email">alex44@gmail.com</div>
                   </div>
                 </div>
-              </form>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-tachometer-alt"></i>
+                  <span>Dashboard</span>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-brain"></i>
+                  <span>My ThoughtPods</span>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>My Insights</span>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-cog"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Log Out</span>
+                </a>
+              </div>
             </div>
+
+
+
           </div>
-        </section>
-      </main>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden glass-effect">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+          <a href="#features"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+            FEATURES
+          </a>
+          <a href="#how-it-works"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">HOW
+            IT WORKS
+          </a>
+          <a href="#testimonials"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+            TESTIMONIALS
+          </a>
+          <a href="#pricing"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+            PRICING
+          </a>
+          <a href="#cta"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90">
+            JOIN BETA
+          </a>
+        </div>
+      </div>
+  </nav>
+    <main class="py-[5rem]">
+      <section class="grid-pattern">
+        <div class="toggle-container" id="toggleBtn">
+          <div class="labels">
+            <span>Log In</span>
+            <span>Sign Up</span>
+          </div>
+          <div class="toggle-slider"></div>
+        </div>
+
+        <div class="card-wrapper">
+          <div class="form-card" id="formCard">
+            <!-- Login Face -->
+            <form class="form-face front">
+              <h2>Login to your account</h2>
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="john_doe123" class="input-group" />
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="*********" minlength="8" class="input-group" />
+              <a href="#" class="forgot-password">Forgot your password?</a>
+              <button type="submit" class="submit-form">Login</button>
+            </form>
+
+            <!-- Sign Up Face -->
+            <form class="form-face back">
+              <h2>Create Your Account</h2>
+              <p class="sub-title">Let's get started.</p>
+              <label for="email2">Email</label>
+              <input type="email" id="email2" placeholder="john.doe@example.com" class="input-group" />
+              <label for="username2">Username</label>
+              <input type="text" id="username2" placeholder="john_doe123" class="input-group" />
+              <label for="password2">Password</label>
+              <input type="password" id="password2" placeholder="*********" minlength="8" class="input-group" />
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" id="confirmPassword" placeholder="*********" minlength="8" class="input-group" />
+              <div class="checkbox-container">
+                <label class="terms-wrapper">
+                  <input type="checkbox" id="check" />
+                  <span>I agree to the <a href="#">Terms of Service</a> and
+                    <a href="#">Privacy Policy</a></span>
+                </label>
+              </div>
+              <button type="submit" class="submit-form" id="create">
+                Create Account
+              </button>
+              <div class="social-signin">
+                <p>Or SignIn with</p>
+                <div class="icons">
+                  <a href="#"><i class="fa-brands fa-google"></i></a>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900/80 text-white py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold mb-4 text-white">thoughty</h3>
+          <p class="text-gray-400 mb-4">
+            The gamified thought development platform for entrepreneurs and
+            creators.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Product</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Beta Program</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Guides</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 THOUGHTY. ALL RIGHTS RESERVED.</p>
+        <div class="mt-2 text-sm">
+          <a href="#" class="hover:text-white">PRIVACY POLICY</a> |
+          <a href="#" class="hover:text-white">TERMS OF SERVICE</a> |
+          <a href="#" class="hover:text-white">COOKIE POLICY</a>
+        </div>
+      </div>
     </div>
-    <script src="./js/signup.js"></script>
-  </body>
+  </footer>
+  <script src="./js/signup.js"></script>
+  <script src="./js/navbar.js"></script>
+</body>
+
 </html>

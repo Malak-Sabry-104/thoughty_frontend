@@ -10,6 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector(".form-face.front");
   const signupForm = document.querySelector(".form-face.back");
 
+  try {
+    let reqParamValue = window.location.href.split('?')[1];
+    if (reqParamValue == 'request=signup') {
+      formCard.classList.toggle("flipped");
+      toggleBtn.classList.toggle("active");
+    }
+  } catch (error) {
+    
+  }
+
   function clearErrors(form) {
     form.querySelectorAll(".error-message").forEach(el => el.remove());
     form.querySelectorAll("input").forEach(input => input.classList.remove("input-error"));

@@ -26,14 +26,14 @@ body {
   scroll-behavior: smooth;
 }
 
-#landing .gradient-text {
+.gradient-text {
   background: linear-gradient(90deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-#landing .gradient-bg {
+.pink-gradient-bg {
   background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
@@ -51,11 +51,11 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-#landing .btn-hover {
+.btn-hover {
   transition: all 0.3s ease;
 }
 
-#landing .btn-hover:hover {
+.btn-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -96,7 +96,7 @@ body {
   background-size: 40px 40px;
 }
 
-#landing .glass-effect {
+.glass-effect {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -116,11 +116,11 @@ body {
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
-#landing .nav-link {
+.nav-link {
   position: relative;
 }
 
-#landing .nav-link::after {
+.nav-link::after {
   content: "";
   position: absolute;
   width: 0;
@@ -131,7 +131,7 @@ body {
   transition: width 0.3s ease;
 }
 
-#landing .nav-link:hover::after {
+.nav-link:hover::after {
   width: 100%;
 }
 
