@@ -1,0 +1,150 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--darker);
+  color: var(--light);
+}
+
+h6, small {
+  color: var(--light);
+}
+
+/* Pod card styles */
+.pod-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--input-br);
+}
+
+.pod-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-light);
+}
+
+/* Stage badges */
+.stage-badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+  border-radius: 50px;
+}
+
+.stage-seed {
+  background-color: var(--accent);
+  color: white;
+}
+
+.stage-sprout {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.stage-bloom {
+  background-color: var(--primary);
+  color: white;
+}
+
+.stage-fruit {
+  background-color: var(--primary-light);
+  color: var(--dark);
+}
+
+.pod-content {
+  min-height: 200px;
+  border: 1px solid var(--input-br);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: var(--input-bg);
+  color: var(--light);
+}
+
+.comment-section {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.comment {
+  border-left: 3px solid var(--primary-light);
+  padding-left: 10px;
+  margin-bottom: 10px;
+  background-color: var(--card-bg);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.emoji-reaction {
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.emoji-reaction:hover {
+  transform: scale(1.2);
+  color: var(--accent);
+}
+
+/* Timeline styles */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--primary-light);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  border: 2px solid var(--dark);
+}
+
+.timeline-item.active::before {
+  background-color: var(--secondary);
+  width: 14px;
+  height: 14px;
+  left: -31px;
+}
+
+/* Animation */
+.animate-bounce {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.reacted {
+  filter: drop-shadow(0 0 6px var(--primary));
+}
+#newPodModal label{
+  text-align: start;
+}

@@ -75,6 +75,9 @@ User's thought stats (Pods created, Evolution points, Badges earned)
 
 Quick actions: “Create Pod”, “Start Battle”, “Roulette”
 
+
+
+
 💭 4. Thought Pods
 
 ThoughtPod Listing:
@@ -99,6 +102,9 @@ Visual stepper component or vertical list showing past evolution stages
 
 Clickable steps to view previous versions
 
+
+
+
 ⚔️ 5. Mind Battles
 
 Battle UI:
@@ -118,6 +124,8 @@ Show real-time vote count or delay for suspense
 AI Verdict Section:
 
 After voting, show AI summary or feedback using a styled message box
+
+
 
 🎲 6. Brainstorm Tools
 
