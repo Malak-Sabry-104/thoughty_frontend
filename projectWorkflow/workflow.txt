@@ -223,6 +223,7 @@ Each node = evolution stage or significant action
 
 Tooltips or modal on click to show detail
 
+
 🧪 11. Local Storage & State (JS Only)
 
 Use localStorage for:
@@ -238,6 +239,9 @@ User session (if not using backend yet)
 Example:
 
 const savedTasks = JSON.parse(localStorage.getItem("checkedTasks")) || {};
+
+
+
 
 📄 12. Deployment Tips
 

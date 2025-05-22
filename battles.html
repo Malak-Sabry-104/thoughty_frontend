@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoughty | Gamified Thought Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="./css/battle.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b5cf6",
+            "primary-light": "#a78bfa",
+            secondary: "#10b981",
+            accent: "#ec4899",
+            dark: "#0f172a",
+            darker: "#020617",
+            light: "#f8fafc",
+            "card-bg": "rgba(15, 23, 42, 0.8)",
+            "input-br": "rgba(25, 39, 70, 0.8)",
+            "input-bg": "rgba(19, 28, 47, 0.8)",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+  <div id="battle" class="page">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="/">
+              <img src="./assests/imgs/temt logo.jpg" class="w-10 mx-3">
+            </a>
+            <span class="text-xl font-bold text-white">Thoughty</span>
+          </div>
+          <div class="md:hidden">
+            <button id="mobile-menu-button"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-center space-x-8 ">
+
+              <!-- nav-links -->
+              <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Explore
+              </a>
+              <a href="/brainstorm.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Brainstorm
+              </a>
+              <a href="./battles.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Battles
+              </a>
+              <a href="/about.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                About
+              </a>
+              <a href="/contact.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Contact
+              </a>
+
+              <!-- signin & sign up btns -->
+              <a href="/signup.html?request=signin"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In
+              </a>
+              <a href="/signup.html?request=signup"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-user-plus mr-2"></i> Sign Up
+              </a>
+
+              <!-- Hover-Activated Gradient Border Button -->
+              <div class="guest-btn-container">
+                <a href="/guest" class="guest-btn">
+                  <i class="fa-solid fa-user-clock mr-2"></i> guest mode
+                </a>
+              </div>
+
+              <!-- notification center -->
+              <div class="flex items-center space-x-4 notif-center">
+                <div class="relative">
+                  <div
+                    class="w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-bell  text-primary-light"></i>
+                  </div>
+                  <span
+                    class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center text-xs">3</span>
+                </div>
+              </div>
+
+              <!-- create pod button -->
+              <a href="./pods.html?new_pod_popup=true" class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white
+                 pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-plus mr-2"></i>
+                New Pod
+              </a>
+
+              <!-- dropdown user  -->
+              <div class="profile-dropdown">
+                <button class="avatar-btn">
+                  <img src="./assests/imgs/avatar-user-vector.jpg" class="avatar-img" alt="Profile">
+                </button>
+
+                <div class="dropdown-content">
+                  <div class="dropdown-header">
+                    <img src="./assests/imgs/avatar-user-vector.jpg" class="header-avatar" alt="Profile">
+                    <div class="user-info">
+                      <div class="user-name">Alexandra Chen</div>
+                      <div class="user-email">alex44@gmail.com</div>
+                    </div>
+                  </div>
+
+                  <a href="./dashboard.html" class="dropdown-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  <a href="./pods.html" class="dropdown-item">
+                    <i class="fas fa-brain"></i>
+                    <span>My ThoughtPods</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>My Insights</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                  </a>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+            <a href="#features"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              FEATURES
+            </a>
+            <a href="#how-it-works"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">HOW
+              IT WORKS
+            </a>
+            <a href="#testimonials"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              TESTIMONIALS
+            </a>
+            <a href="#pricing"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              PRICING
+            </a>
+            <a href="#cta"
+              class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90">
+              JOIN BETA
+            </a>
+          </div>
+        </div>
+    </nav>
+
+    <main class="pt-[3rem]">
+      <!-- Main Dashboard -->
+      <div id="dashboardScreen" class="container mx-auto px-4 py-8">
+        <!-- Recent Battles -->
+        <div>
+          <div class="flex justify-between w-full md:w-[80%] mt-4 mx-auto p-2 items-center">
+            <h2 class="title-font text-2xl font-bold mb-4 gradient-text">Recent Battles</h2>
+            <button id="newBattleBtn"
+              class=" text-white px-6 py-3 rounded-full font-medium transition flex items-center space-x-2">
+              <i class="fas fa-shield-alt"></i>
+              <span>Start New Battle</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Battle Card 1 -->
+            <div class="battle-container">
+              <div class="battle-card  rounded-xl shadow-md overflow-hidden">
+                <div class="p-4 border-b flex justify-between items-center">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <span class="font-medium">You</span>
+                  </div>
+                  <span class="text-sm text-gray-500">2 hours ago</span>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-center mb-3">
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-indigo-100 mx-auto mb-2 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-lightbulb"></i>
+                      </div>
+                      <p class="font-medium text-sm">Digital Nomadism</p>
+                    </div>
+                    <div class="text-xl font-bold text-gray-400">VS</div>
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-pink-100 mx-auto mb-2 flex items-center justify-center text-pink-600">
+                        <i class="fas fa-home"></i>
+                      </div>
+                      <p class="font-medium text-sm">Stable Careers</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between text-xs text-gray-500 mb-2">
+                    <span>65%</span>
+                    <span>35%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-indigo-500 to-pink-500 h-2 rounded-full" style="width: 65%"></div>
+                  </div>
+                  <div class="mt-4 flex justify-between items-center">
+                    <div class="flex space-x-2">
+                      <span class="text-sm text-gray-500"><i class="fas fa-thumbs-up mr-1"></i> 24</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-comment mr-1"></i> 5</span>
+                    </div>
+                    <button class="view-battle-btn text-sm text-indigo-600 hover:underline">View Battle</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Battle Card 2 -->
+            <div class="battle-container">
+              <div class="battle-card  rounded-xl shadow-md overflow-hidden">
+                <div class="p-4 border-b flex justify-between items-center">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <span class="font-medium">ThoughtLeader</span>
+                  </div>
+                  <span class="text-sm text-gray-500">5 hours ago</span>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-center mb-3">
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-green-100 mx-auto mb-2 flex items-center justify-center text-green-600">
+                        <i class="fas fa-tree"></i>
+                      </div>
+                      <p class="font-medium text-sm">Urban Living</p>
+                    </div>
+                    <div class="text-xl font-bold text-gray-400">VS</div>
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-yellow-100 mx-auto mb-2 flex items-center justify-center text-yellow-600">
+                        <i class="fas fa-mountain"></i>
+                      </div>
+                      <p class="font-medium text-sm">Rural Retreat</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between text-xs text-gray-500 mb-2">
+                    <span>48%</span>
+                    <span>52%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-indigo-500 to-pink-500  h-2 rounded-full" style="width: 48%">
+                    </div>
+                  </div>
+                  <div class="mt-4 flex justify-between items-center">
+                    <div class="flex space-x-2">
+                      <span class="text-sm text-gray-500"><i class="fas fa-thumbs-up mr-1"></i> 42</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-comment mr-1"></i> 12</span>
+                    </div>
+                    <button class="view-battle-btn text-sm text-indigo-600 hover:underline">View Battle</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Battle Card 3 -->
+            <div class="battle-container">
+              <div class="battle-card  rounded-xl shadow-md overflow-hidden">
+                <div class="p-4 border-b flex justify-between items-center">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <span class="font-medium">LogicMaster</span>
+                  </div>
+                  <span class="text-sm text-gray-500">1 day ago</span>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-center mb-3">
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-blue-100 mx-auto mb-2 flex items-center justify-center text-blue-600">
+                        <i class="fas fa-robot"></i>
+                      </div>
+                      <p class="font-medium text-sm">AI Governance</p>
+                    </div>
+                    <div class="text-xl font-bold text-gray-400">VS</div>
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-red-100 mx-auto mb-2 flex items-center justify-center text-red-600">
+                        <i class="fas fa-users"></i>
+                      </div>
+                      <p class="font-medium text-sm">Human Control</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between text-xs text-gray-500 mb-2">
+                    <span>56%</span>
+                    <span>44%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-indigo-500 to-pink-500  h-2 rounded-full" style="width: 56%">
+                    </div>
+                  </div>
+                  <div class="mt-4 flex justify-between items-center">
+                    <div class="flex space-x-2">
+                      <span class="text-sm text-gray-500"><i class="fas fa-thumbs-up mr-1"></i> 37</span>
+                      <span class="text-sm text-gray-500"><i class="fas fa-comment mr-1"></i> 8</span>
+                    </div>
+                    <button class="view-battle-btn text-sm text-indigo-600 hover:underline">View Battle</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Select Pod Screen (Hidden by default) -->
+      <section id="selectPodScreen" class="hidden container mx-auto px-4 py-8 mb-12">
+        <div class="flex items-center mb-6">
+          <button id="backToDashboard" class="mr-4 text-gray-500 hover:text-gray-700">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </button>
+          <h1 class="title-font text-3xl font-bold gradient-text">Select Your ThoughtPod</h1>
+        </div>
+
+        <div class="mb-6">
+          <div class="relative">
+            <input type="text" placeholder="Search your ThoughtPods..."
+              class="w-full px-4 py-3 pl-10  bg-transparent  rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Pod Card 1 -->
+          <div class="pod-card  rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="font-bold">Digital Nomadism</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">Exploring the benefits and challenges of location-independent work
+                and
+                lifestyle in the digital age.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Lifestyle</span>
+                <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Work</span>
+                <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Technology</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-calendar mr-1"></i> 2 days ago</span>
+                <span><i class="fas fa-bolt mr-1"></i> 3 battles</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-pod-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-pod="Digital Nomadism">
+                Select for Battle
+              </button>
+            </div>
+          </div>
+
+          <!-- Pod Card 2 -->
+          <div class="pod-card  rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center">
+                  <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="font-bold">Consciousness Theory</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">Examining different theories of consciousness and their implications
+                for AI and human cognition.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Philosophy</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Science</span>
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">AI</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-calendar mr-1"></i> 1 week ago</span>
+                <span><i class="fas fa-bolt mr-1"></i> 5 battles</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-pod-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-pod="Consciousness Theory">
+                Select for Battle
+              </button>
+            </div>
+          </div>
+
+          <!-- Pod Card 3 -->
+          <div class="pod-card  rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="font-bold">Future of Capitalism</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">Analyzing potential evolutionary paths for capitalist systems in the
+                face of technological disruption.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Economics</span>
+                <span class="px-2 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Future</span>
+                <span class="px-2 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Society</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-calendar mr-1"></i> 3 days ago</span>
+                <span><i class="fas fa-bolt mr-1"></i> 2 battles</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-pod-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-pod="Future of Capitalism">
+                Select for Battle
+              </button>
+            </div>
+          </div>
+
+          <!-- Add New Pod Card
+      <div
+        class="pod-card rounded-xl shadow-md overflow-hidden cursor-pointer border-2 border-dashed border-gray-300 hover:border-indigo-400">
+        <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+          <div class="w-12 h-12 rounded-full bg-gray-100 text-gray-400 mb-4 flex items-center justify-center">
+            <i class="fas fa-plus text-xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-600 mb-2">Create New ThoughtPod</h3>
+          <p class="text-gray-500 text-sm">Start a fresh idea to use in your next battle</p>
+        </div>
+      </div> -->
+        </div>
+      </section>
+
+      <!-- Select Opponent Screen (Hidden by default) -->
+      <section id="selectOpponentScreen" class="hidden container mx-auto px-4 py-8 mb-12">
+        <div class="flex items-center mb-6">
+          <button id="backToSelectPod" class="mr-4 text-gray-500 hover:text-gray-700">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </button>
+          <h1 class="title-font text-3xl font-bold gradient-text">Select Opponent ThoughtPod</h1>
+        </div>
+
+        <div class="selected-pod rounded-xl p-4 mb-6">
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-3">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Your selected ThoughtPod:</p>
+              <p class="font-bold" id="selectedPodName">Digital Nomadism</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div class="relative mb-3 md:mb-0 md:w-1/2 md:mr-4">
+              <input type="text" placeholder="Search public ThoughtPods..."
+                class="w-full px-4 py-3 pl-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+            </div>
+            <div class="flex space-x-2">
+              <select class="dark-select px-3 py-2   rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option>All Topics</option>
+                <option>Lifestyle</option>
+                <option>Technology</option>
+                <option>Philosophy</option>
+              </select>
+              <select class=" dark-select px-3 py-2  rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option>Sort By</option>
+                <option>Most Popular</option>
+                <option>Recent</option>
+                <option>Battle Wins</option>
+              </select>
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Opponent Pod 1 -->
+          <div class="pod-card rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                  <i class="fas fa-home"></i>
+                </div>
+                <h3 class="font-bold">Stable Careers</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">The value of traditional career paths and stable employment in an
+                era
+                of gig economies and rapid change.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Career</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Stability</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Society</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-user mr-1"></i> ThoughtLeader</span>
+                <span><i class="fas fa-bolt mr-1"></i> 7 battles (4-2-1)</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-opponent-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-opponent="Stable Careers">
+                Challenge This Pod
+              </button>
+            </div>
+          </div>
+
+          <!-- Opponent Pod 2 -->
+          <div class="pod-card rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                  <i class="fas fa-city"></i>
+                </div>
+                <h3 class="font-bold">Urban Living</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">Why cities continue to be hubs of innovation, culture, and economic
+                opportunity despite their challenges.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Cities</span>
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Community</span>
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Innovation</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-user mr-1"></i> CityThinker</span>
+                <span><i class="fas fa-bolt mr-1"></i> 12 battles (8-3-1)</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-opponent-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-opponent="Urban Living">
+                Challenge This Pod
+              </button>
+            </div>
+          </div>
+
+          <!-- Opponent Pod 3 -->
+          <div class="pod-card rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="font-bold">Corporate Careers</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">The evolving role of traditional corporate careers in personal
+                development and societal contribution.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Business</span>
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Career</span>
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Growth</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-user mr-1"></i> CareerGuru</span>
+                <span><i class="fas fa-bolt mr-1"></i> 9 battles (5-3-1)</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-opponent-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-opponent="Corporate Careers">
+                Challenge This Pod
+              </button>
+            </div>
+          </div>
+
+          <!-- AI Suggested Match -->
+          <div class="pod-card  rounded-xl shadow-md overflow-hidden cursor-pointer">
+            <!-- <div
+              class="absolute top-3 right-3 bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full flex items-center">
+              <i class="fas fa-robot mr-1"></i>
+              <span>AI Suggested</span>
+            </div> -->
+            <div class="p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="font-bold">Community Roots</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">The importance of deep community connections and local roots in
+                personal fulfillment and societal health.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Community</span>
+                <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Belonging</span>
+                <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Society</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span><i class="fas fa-user mr-1"></i> SocialThinker</span>
+                <span><i class="fas fa-bolt mr-1"></i> 6 battles (3-2-1)</span>
+              </div>
+            </div>
+            <div class=" px-4 py-3 text-right">
+              <button
+                class="select-opponent-btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                data-opponent="Community Roots">
+                Challenge This Pod
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Battle View Screen (Hidden by default) -->
+      <section id="battleViewScreen" class="hidden container mx-auto px-4 py-8 mb-12">
+        <div class="flex items-center mb-6">
+          <button id="backToSelectOpponent" class="mr-4 text-gray-500 hover:text-gray-700">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </button>
+          <h1 class="title-font text-3xl font-bold gradient-text">Mind Battle</h1>
+        </div>
+
+        <div class=" rounded-xl shadow-lg overflow-hidden mb-6">
+          <!-- Battle Header -->
+          <div class="border-b p-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <span class="font-medium">Active Battle</span>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-share-alt"></i>
+              </button>
+              <button class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Battle Content -->
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <!-- Pod A -->
+              <div class="text-center">
+                <div
+                  class="w-20 h-20 rounded-full  mx-auto mb-4 flex items-center justify-center text-indigo-600 text-2xl">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-2" id="battlePodA">Digital Nomadism</h3>
+                <p class="text-gray-600 text-sm mb-4">Exploring the benefits and challenges of location-independent work
+                  and lifestyle in the digital age.</p>
+                <div class="flex justify-center space-x-2 mb-4">
+                  <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Lifestyle</span>
+                  <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Work</span>
+                </div>
+                <button id="voteA"
+                  class="vote-btn bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700 transition w-full max-w-xs">
+                  Vote for This Pod
+                </button>
+              </div>
+
+              <!-- VS Separator -->
+              <div class="hidden md:flex items-center justify-center">
+                <div class="relative w-full max-w-xs">
+                  <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-300"></div>
+                  </div>
+                  <div class="relative flex justify-center">
+                    <span class=" px-4 text-2xl font-bold text-gray-400">VS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pod B -->
+              <div class="text-center">
+                <div
+                  class="w-20 h-20 rounded-full bg-green-100 mx-auto mb-4 flex items-center justify-center text-green-600 text-2xl">
+                  <i class="fas fa-home"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-2" id="battlePodB">Stable Careers</h3>
+                <p class="text-gray-600 text-sm mb-4">The value of traditional career paths and stable employment in an
+                  era of gig economies and rapid change.</p>
+                <div class="flex justify-center space-x-2 mb-4">
+                  <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Career</span>
+                  <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Stability</span>
+                </div>
+                <button id="voteB"
+                  class="vote-btn bg-green-600 text-white px-6 py-3 rounded-full font-medium hover:bg-green-700 transition w-full max-w-xs">
+                  Vote for This Pod
+                </button>
+              </div>
+            </div>
+
+            <!-- AI Decision Option -->
+            <div class="text-center mb-8">
+              <button id="aiDecide"
+                class="bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-900 transition inline-flex items-center">
+                <i class="fas fa-robot mr-2"></i>
+                Let AI Decide
+              </button>
+            </div>
+
+            <!-- Voting Results (Initially hidden) -->
+            <div id="votingResults" class="hidden">
+              <div class="mb-4">
+                <div class="flex justify-between text-sm text-gray-500 mb-1">
+                  <span id="podAName">Digital Nomadism</span>
+                  <span id="podBName">Stable Careers</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                  <div id="voteBarA" class="vote-bar bg-indigo-600 h-4 rounded-l-full" style="width: 0%"></div>
+                  <div id="voteBarB" class="vote-bar bg-green-600 h-4 rounded-r-full" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-xs p-3 text-gray-500 mt-1">
+                  <span id="voteCountA">0 votes</span>
+                  <span id="voteCountB">0 votes</span>
+                </div>
+              </div>
+
+              <!-- AI Verdict (Initially hidden) -->
+              <div id="aiVerdict" class="hidden mt-8  rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3">
+                    <i class="fas fa-robot"></i>
+                  </div>
+                  <h3 class="font-bold">AI Judge Verdict</h3>
+                </div>
+                <div class=" rounded-lg p-4 shadow-sm">
+                  <p class="text-gray-700 mb-3">After analyzing both ThoughtPods, I declare the winner to be:</p>
+                  <div class="flex items-center justify-center mb-3">
+                    <div id="winnerBadge"
+                      class="px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500  text-white font-bold flex items-center">
+                      <i class="fas fa-trophy mr-2"></i>
+                      <span id="winnerText">Digital Nomadism</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm" id="verdictText">"While stable careers offer security, the digital
+                    nomad lifestyle represents the future of work with its flexibility, global perspective, and
+                    alignment
+                    with technological advancements. The ability to work from anywhere fosters creativity and personal
+                    growth in ways traditional office environments often cannot match."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Battle Footer -->
+          <div class="border-t p-4 flex justify-between items-center">
+            <div class="flex space-x-4">
+              <button class="text-gray-500 hover:text-indigo-600 flex items-center">
+                <i class="fas fa-thumbs-up mr-1"></i>
+                <span>24</span>
+              </button>
+              <button id="viewCommentsBtn" class="text-gray-500 hover:text-indigo-600 flex items-center">
+                <i class="fas fa-comment mr-1"></i>
+                <span>5</span>
+              </button>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">Started 2 hours ago</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 text-white py-12 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold mb-4 text-white">thoughty</h3>
+            <p class="text-gray-400 mb-4">
+              The gamified thought development platform for entrepreneurs and
+              creators.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Product</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Beta Program</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Guides</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 THOUGHTY. ALL RIGHTS RESERVED.</p>
+          <div class="mt-2 text-sm">
+            <a href="#" class="hover:text-white">PRIVACY POLICY</a> |
+            <a href="#" class="hover:text-white">TERMS OF SERVICE</a> |
+            <a href="#" class="hover:text-white">COOKIE POLICY</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="./js/navbar.js"></script>
+  <script src="./js/battle.js"></script>
+</body>
+
+</html>

@@ -4,12 +4,13 @@ body {
   color: var(--light);
 }
 
-h6, small {
+#pods h6,
+small {
   color: var(--light);
 }
 
 /* Pod card styles */
-.pod-card {
+#pods .pod-card {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -19,40 +20,40 @@ h6, small {
   border: 1px solid var(--input-br);
 }
 
-.pod-card:hover {
+#pods .pod-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border-color: var(--primary-light);
 }
 
 /* Stage badges */
-.stage-badge {
+#pods .stage-badge {
   font-size: 0.75rem;
   padding: 0.35em 0.65em;
   border-radius: 50px;
 }
 
-.stage-seed {
+#pods .stage-seed {
   background-color: var(--accent);
   color: white;
 }
 
-.stage-sprout {
+#pods .stage-sprout {
   background-color: var(--secondary);
   color: white;
 }
 
-.stage-bloom {
+#pods .stage-bloom {
   background-color: var(--primary);
   color: white;
 }
 
-.stage-fruit {
+#pods .stage-fruit {
   background-color: var(--primary-light);
   color: var(--dark);
 }
 
-.pod-content {
+#pods .pod-content {
   min-height: 200px;
   border: 1px solid var(--input-br);
   border-radius: 8px;
@@ -62,12 +63,12 @@ h6, small {
   color: var(--light);
 }
 
-.comment-section {
+#pods .comment-section {
   max-height: 300px;
   overflow-y: auto;
 }
 
-.comment {
+#pods .comment {
   border-left: 3px solid var(--primary-light);
   padding-left: 10px;
   margin-bottom: 10px;
@@ -76,25 +77,25 @@ h6, small {
   border-radius: 4px;
 }
 
-.emoji-reaction {
+#pods .emoji-reaction {
   cursor: pointer;
   margin-right: 5px;
   font-size: 1.2rem;
   transition: transform 0.2s;
 }
 
-.emoji-reaction:hover {
+#pods .emoji-reaction:hover {
   transform: scale(1.2);
   color: var(--accent);
 }
 
 /* Timeline styles */
-.timeline {
+#pods .timeline {
   position: relative;
   padding-left: 30px;
 }
 
-.timeline::before {
+#pods .timeline::before {
   content: "";
   position: absolute;
   left: 10px;
@@ -104,12 +105,12 @@ h6, small {
   background-color: var(--primary-light);
 }
 
-.timeline-item {
+#pods .timeline-item {
   position: relative;
   margin-bottom: 20px;
 }
 
-.timeline-item::before {
+#pods .timeline-item::before {
   content: "";
   position: absolute;
   left: -30px;
@@ -121,7 +122,7 @@ h6, small {
   border: 2px solid var(--dark);
 }
 
-.timeline-item.active::before {
+#pods .timeline-item.active::before {
   background-color: var(--secondary);
   width: 14px;
   height: 14px;
@@ -129,12 +130,13 @@ h6, small {
 }
 
 /* Animation */
-.animate-bounce {
+#pods .animate-bounce {
   animation: bounce 0.5s;
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -142,9 +144,9 @@ h6, small {
   }
 }
 
-.reacted {
+#pods .reacted {
   filter: drop-shadow(0 0 6px var(--primary));
 }
-#newPodModal label{
+#pods #newPodModal label {
   text-align: start;
 }

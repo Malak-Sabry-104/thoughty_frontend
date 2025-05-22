@@ -1,0 +1,116 @@
+:root {
+  --primary: #8b5cf6;
+  --primary-light: #a78bfa;
+  --secondary: #10b981;
+  --accent: #ec4899;
+  --dark: #0f172a;
+  --darker: #020617;
+  --light: #f8fafc;
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --input-br: rgba(25, 39, 70, 0.8);
+  --input-bg: rgba(19, 28, 47, 0.8);
+}
+body {
+  background: var(--darker);
+  color: var(--light);
+}
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.battle-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--card-bg);
+  color: var(--light);
+}
+
+.battle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.pod-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--input-br);
+}
+
+.pod-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.vote-btn {
+  transition: all 0.3s ease;
+}
+
+.vote-btn:hover {
+  transform: scale(1.05);
+}
+
+.vote-bar {
+  transition: width 1s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+#selectPodScreen input {
+  border: 3px solid var(--input-br);
+}
+input,
+select {
+  background: transparent !important;
+}
+.selected-pod {
+  background: var(--input-bg);
+}
+
+.dark-select {
+  background-color: var(--input-br);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--input-br);
+  font-family: Arial, sans-serif;
+  width: 200px;
+  font-size: 16px;
+}
+
+.dark-select option {
+  background-color: var(--dark);
+  color: white;
+  padding: 8px;
+}
+
+.dark-select option:hover {
+  background-color: var(--dark);
+}
+#selectOpponentScreen input {
+  border: 1px solid var(--input-br);
+}
+#newBattleBtn {
+  background: var(--primary);
+}
+#newBattleBtn:hover {
+  background-color: var(--primary-light);
+  opacity: 0.9;
+}

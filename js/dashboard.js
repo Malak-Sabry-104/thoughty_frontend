@@ -16,10 +16,13 @@ const actionButtons = document.querySelectorAll(".action-btn");
 actionButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const action = btn.textContent.trim();
-    alert(`In a real app, this would open the ${action} functionality`);
+    if (action === "Create Pod") {  // or whatever text your button has
+      window.location.href = "/pods.html";
+    } else {
+      alert(`In a real app, this would open the ${action} functionality`);
+    }
   });
 });
-
 // Explore buttons on cards
 const exploreButtons = document.querySelectorAll(".card-gradient button");
 exploreButtons.forEach((btn) => {

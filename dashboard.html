@@ -8,7 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />  <link rel="stylesheet" href="./css/navbar.css">
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/navbar.css">
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="./css/dashboard.css">
 
@@ -68,7 +69,7 @@
                 class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
                 Brainstorm
               </a>
-              <a href="/battles.html"
+              <a href="./battles.html"
                 class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
                 Battles
               </a>
@@ -136,7 +137,7 @@
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                   </a>
-                  <a href="#" class="dropdown-item">
+                  <a href="./pods.html" class="dropdown-item">
                     <i class="fas fa-brain"></i>
                     <span>My ThoughtPods</span>
                   </a>
@@ -380,20 +381,20 @@
             <!-- Quick Actions -->
             <h3 class="font-bold mb-4">Quick Actions</h3>
             <div class="space-y-3">
-              <button
-                class="action-btn w-full bg-primary hover:bg-primary-light py-3 px-4 rounded-lg flex items-center justify-between transition">
+              <a href="./pods.html?new_pod_popup=true"
+                class=" w-full bg-primary hover:bg-primary-light py-3 px-4 rounded-lg flex items-center justify-between transition">
                 <span class="flex items-center">
                   <i class="fas fa-plus-circle mr-3"></i> Create Pod
                 </span>
                 <i class="fas fa-chevron-right text-sm"></i>
-              </button>
-              <button
-                class="action-btn w-full bg-secondary hover:bg-green-500 py-3 px-4 rounded-lg flex items-center justify-between transition">
+              </a>
+              <a href="./battles.html"
+                class=" w-full bg-secondary hover:bg-green-500 py-3 px-4 rounded-lg flex items-center justify-between transition">
                 <span class="flex items-center">
                   <i class="fas fa-trophy mr-3"></i> Start Battle
                 </span>
                 <i class="fas fa-chevron-right text-sm"></i>
-              </button>
+              </a>
               <button
                 class="action-btn w-full bg-accent hover:bg-pink-500 py-3 px-4 rounded-lg flex items-center justify-between transition">
                 <span class="flex items-center">
