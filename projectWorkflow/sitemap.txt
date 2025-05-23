@@ -1,0 +1,233 @@
+🧠 MINDVERSE FRONTEND DEV GUIDE (HTML/CSS/JS ONLY)
+
+📌 GENERAL STRATEGY
+
+You will build the UI in a modular way using:
+
+* index.html + additional HTML pages per section
+* style.css for global styling
+* script.js for DOM interactivity
+* Use localStorage for persistence (checklists, dark mode, user state)
+
+🧩 MAIN PAGES TO BUILD
+
+1. index.html → Landing + Login
+2. dashboard.html → User stats + feed
+3. pod.html → ThoughtPod detail & timeline
+4. battle.html → Battle Arena
+5. brainstorm.html → Roulette + AI ideas
+6. mentor.html → Thinking insights
+7. gamify.html → Badges + tokens + leaderboard
+
+📁 FILE STRUCTURE
+
+mindverse/
+├── index.html
+├── dashboard.html
+├── pod.html
+├── battle.html
+├── brainstorm.html
+├── mentor.html
+├── gamify.html
+├── style.css
+├── script.js
+├── assets/ (images/icons)
+├── components/ (HTML snippets if needed)
+
+✅ STEP-BY-STEP GUIDE
+
+1. 🛠️ GLOBAL TEMPLATE
+
+All pages share:
+
+* <header> with logo + nav bar (Home, Pods, Battles, etc.)
+* <main> section for page-specific content
+* <footer> with credits or contact
+
+Use a responsive layout:
+
+* CSS Grid or Flexbox
+* Mobile-first with media queries
+* Add <link rel="stylesheet"> and <script defer src="..."> in every page
+
+2. 🎨 THEME (CSS)
+
+Use CSS variables:
+
+\:root {
+\--primary: #7c3aed;
+\--background: #f9fafb;
+\--text: #1f2937;
+\--accent: #f472b6;
+}
+
+Design system:
+
+* Font: 'Inter' or 'Poppins', fallback sans-serif
+* Rounded corners: border-radius: 12px
+* Shadows for elevation
+* Utility classes: .btn, .card, .input, .hidden, etc.
+* Dark mode: toggle with body.dark and inverted variables
+
+Dark Mode:
+
+* Use JS to toggle body.classList.toggle("dark")
+* Store mode in localStorage
+
+3. 🔐 LOGIN / SIGNUP (index.html)
+
+Features:
+
+* Two tabs: Sign In / Sign Up
+* Email & password fields
+* “Continue as Guest” button
+* JS validation: check empty fields, show errors
+* On success, redirect to dashboard.html
+
+4. 🏠 DASHBOARD (dashboard.html)
+
+Sections:
+
+* Welcome header with username
+* Stats cards: Pods created, Tokens earned, Battles won
+* Quick links: Create Pod, Start Battle, View Leaderboard
+* Feed: Scrollable list of ThoughtPods (title, stage, timestamp)
+
+Use JS to dynamically:
+
+* Render feed items from mock data or localStorage
+* Update stats
+
+5. 💭 THOUGHT POD VIEW (pod.html)
+
+Layout:
+
+* Pod title + metadata (tags, stage, author)
+* Editable stages (textarea or contentEditable)
+* Timeline viewer on side or bottom (vertical list)
+* Comment section (name + comment + reaction emojis)
+
+JS Tasks:
+
+* Save edits to localStorage
+* Add new evolution stages
+* Add comments
+* React to comments (emoji count)
+* Mark pod as complete
+
+6. ⚔️ MIND BATTLES (battle.html)
+
+UI:
+
+* Side-by-side pod comparison
+* Title, summary, tags per side
+* Vote A / Vote B / Let AI Decide
+* Result animation (use confetti or fade)
+
+JS:
+
+* Save vote in localStorage
+* Animate results
+* Fake “AI Verdict” display (random or prewritten logic)
+
+7. 🎰 BRAINSTORM TOOLS (brainstorm.html)
+
+Features:
+
+* Spin roulette (SVG spinner or styled wheel)
+* “Spin” button triggers rotation + random idea
+* Show prompt → “Create Pod” with it
+* Multiverse View: Grid of 3-4 variations of same idea
+
+JS:
+
+* Animate spinner with CSS + JS
+* Store roulette history in localStorage
+
+8. 🧙 MIND MENTOR (mentor.html)
+
+Layout:
+
+* Charts: Categories used, Tone analysis (use simple divs with width %)
+* Insights: Text cards with suggestions
+* AI Tips Carousel: Auto-rotating or left/right arrows
+
+JS:
+
+* Load insights from mock data
+* Save favorites
+* Switch carousel slide on button click or timer
+
+9. 🏅 GAMIFICATION (gamify.html)
+
+Sections:
+
+* Token Wallet UI
+* Badge Collection Grid (locked + unlocked)
+* Leaderboard: List of usernames + token count
+
+CSS:
+
+* Locked badges: grayscale + blur
+* Unlocked: pop animation or glow
+
+JS:
+
+* Click badge to view how to earn
+* Sort leaderboard by score
+
+🔔 10. NOTIFICATIONS
+
+Header bell icon:
+
+* On click → dropdown with updates (new comment, badge, etc.)
+* Red dot if unseen updates (track with localStorage)
+
+JS:
+
+* Clear updates on click
+* Save notification array to localStorage
+
+📊 11. PROGRESS TRACKING (checklist)
+
+Optional page or section:
+
+* Task list with checkboxes
+* Save checked items to localStorage
+* Progress bar
+
+Use <input type="checkbox"> with unique IDs
+
+🧪 12. LOCALSTORAGE
+
+Use for:
+
+* Auth state (fake session)
+* User profile (username, avatar, tokens)
+* ThoughtPods data
+* Battles & votes
+* Theme (dark/light)
+* Checklist progress
+
+Example:
+
+// Save:
+localStorage.setItem("theme", "dark");
+
+// Load:
+const theme = localStorage.getItem("theme");
+
+🎯 BONUS CHALLENGES (Optional)
+
+* Build a file-based blog-style pod system (pods saved as JSON blobs)
+* Add a color picker for customizing theme
+* Add audio for battle wins or badge unlocks
+* Use SVG animations for timelines and wheel
+
+📦 Deployment
+
+* Use Netlify or GitHub Pages
+* Test on mobile and desktop
+* Compress images and minify CSS/JS
+
+Would you like a full starter zip with HTML/CSS/JS boilerplate? Or the landing page code next?
