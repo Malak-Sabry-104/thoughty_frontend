@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoughty | Gamified Thought Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"rel="stylesheet" />
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="./css/mentor.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b5cf6",
+            "primary-light": "#a78bfa",
+            secondary: "#10b981",
+            accent: "#ec4899",
+            dark: "#0f172a",
+            darker: "#020617",
+            light: "#f8fafc",
+            "card-bg": "rgba(15, 23, 42, 0.8)",
+            "input-br": "rgba(25, 39, 70, 0.8)",
+            "input-bg": "rgba(19, 28, 47, 0.8)",
+          },
+        },
+      },
+    };
+  </script>
+
+</head>
+
+<body class="flex flex-col">
+  <div id="mentor" class="page">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="/">
+              <img src="./assests/imgs/temt logo.jpg" class="w-10 mx-3">
+            </a>
+            <span class="text-xl font-bold text-white">Thoughty</span>
+          </div>
+          <div class="md:hidden">
+            <button id="mobile-menu-button"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-center space-x-8 ">
+
+              <!-- nav-links -->
+              <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Explore
+              </a>
+              <a href="/brainstorm.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Brainstorm
+              </a>
+              <a href="./battles.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Battles
+              </a>
+              <a href="/mentor.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Mind Mentor
+              </a>
+              <a href="/info.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Info
+              </a>
+
+              <!-- signin & sign up btns -->
+              <a href="/signup.html?request=signin"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In
+              </a>
+              <a href="/signup.html?request=signup"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-user-plus mr-2"></i> Sign Up
+              </a>
+
+              <!-- Hover-Activated Gradient Border Button -->
+              <div class="guest-btn-container">
+                <a href="/guest" class="guest-btn">
+                  <i class="fa-solid fa-user-clock mr-2"></i> guest mode
+                </a>
+              </div>
+
+              <!-- notification center -->
+              <div class="flex items-center space-x-4 notif-center">
+                <div class="relative">
+                  <div
+                    class="w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-bell  text-primary-light"></i>
+                  </div>
+                  <span
+                    class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center text-xs">3</span>
+                </div>
+              </div>
+
+              <!-- create pod button -->
+              <a href="./pods.html?new_pod_popup=true" class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white
+                 pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-plus mr-2"></i>
+                New Pod
+              </a>
+
+              <!-- dropdown user  -->
+              <div class="profile-dropdown">
+                <button class="avatar-btn">
+                  <img src="./assests/imgs/avatar-user-vector.jpg" class="avatar-img" alt="Profile">
+                </button>
+
+                <div class="dropdown-content">
+                  <div class="dropdown-header">
+                    <img src="./assests/imgs/avatar-user-vector.jpg" class="header-avatar" alt="Profile">
+                    <div class="user-info">
+                      <div class="user-name">Alexandra Chen</div>
+                      <div class="user-email">alex44@gmail.com</div>
+                    </div>
+                  </div>
+
+                  <a href="./dashboard.html" class="dropdown-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  <a href="./pods.html" class="dropdown-item">
+                    <i class="fas fa-brain"></i>
+                    <span>My ThoughtPods</span>
+                  </a>
+                  <a href="./gamify.html" class="dropdown-item">
+                    <i class="fa-solid fa-gamepad"></i> <span>Gamify</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                  </a>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+            <a href="#features"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              FEATURES
+            </a>
+            <a href="#how-it-works"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">HOW
+              IT WORKS
+            </a>
+            <a href="#testimonials"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              TESTIMONIALS
+            </a>
+            <a href="#pricing"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              PRICING
+            </a>
+            <a href="#cta"
+              class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90">
+              JOIN BETA
+            </a>
+          </div>
+        </div>
+    </nav>
+    <main class="pt-[5rem]">
+      <!-- 2. Page Title -->
+      <section class="py-8 px-6">
+        <div class="container mx-auto">
+          <h2 class="text-3xl font-bold gradient-text">Mind Mentor</h2>
+          <p class="text-gray-400 mt-2">Insights into your creative thinking patterns and personalized recommendations
+          </p>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <main class="flex-grow container mx-auto px-6 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left Column - 3. Thinking Profile -->
+          <div class="lg:col-span-1 space-y-8">
+            <!-- Categories Chart -->
+            <div class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)]">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-tags mr-2 text-[var(--primary)]"></i> Idea Categories
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-1 text-sm">
+                    <span>Society</span>
+                    <span>35%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="category-bar h-2.5 rounded-full" style="width: 35%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1 text-sm">
+                    <span>Technology</span>
+                    <span>28%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="category-bar h-2.5 rounded-full" style="width: 28%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1 text-sm">
+                    <span>Emotions</span>
+                    <span>22%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="category-bar h-2.5 rounded-full" style="width: 22%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1 text-sm">
+                    <span>Creativity</span>
+                    <span>15%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="category-bar h-2.5 rounded-full" style="width: 15%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tone Analysis -->
+            <div class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)]">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-chart-line mr-2 text-[var(--secondary)]"></i> Tone Analysis
+              </h3>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span>Optimistic</span>
+                    <span>45%</span>
+                  </div>
+                  <div class="tone-bar" style="width: 45%"></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span>Philosophical</span>
+                    <span>30%</span>
+                  </div>
+                  <div class="tone-bar" style="width: 30%"></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span>Analytical</span>
+                    <span>15%</span>
+                  </div>
+                  <div class="tone-bar" style="width: 15%"></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span>Critical</span>
+                    <span>10%</span>
+                  </div>
+                  <div class="tone-bar" style="width: 10%"></div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-[var(--input-br)]">
+                <p class="text-sm text-gray-400">Your dominant tone is <span
+                    class="text-[var(--secondary)]">optimistic</span>, with a 10% increase from last month.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle Column - 4. AI-Generated Insights -->
+          <div class="lg:col-span-1">
+            <div class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)] h-full">
+              <div class="flex justify-between items-center mb-6 relative">
+                <h3 class="text-xl font-semibold flex items-center">
+                  <i class="fas fa-lightbulb mr-2 text-[var(--accent)]"></i> Insights & Suggestions
+                </h3>
+                <div class="flex space-x-2">
+                  <div class="relative">
+                    <button id="filter-btn"
+                      class="px-3 py-1 rounded-lg bg-[var(--input-bg)] border border-[var(--input-br)] text-sm flex items-center">
+                      <i class="fas fa-filter mr-1"></i> Filter
+                    </button>
+                    <div id="filter-dropdown" class="filter-dropdown">
+                      <h4 class="font-medium mb-2">Filter by:</h4>
+                      <div class="filter-option">
+                        <input type="checkbox" id="filter-category" checked>
+                        <label for="filter-category">Category</label>
+                      </div>
+                      <div class="filter-option">
+                        <input type="checkbox" id="filter-tone" checked>
+                        <label for="filter-tone">Tone</label>
+                      </div>
+                      <div class="filter-option">
+                        <input type="checkbox" id="filter-favorites" checked>
+                        <label for="filter-favorites">Favorites</label>
+                      </div>
+                      <div class="filter-option">
+                        <input type="checkbox" id="filter-new" checked>
+                        <label for="filter-new">New</label>
+                      </div>
+                      <div class="mt-2 pt-2 border-t border-[var(--input-br)]">
+                        <button id="apply-filters"
+                          class="w-full py-1 rounded bg-[var(--primary)] text-sm">Apply</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-4" id="insights-container">
+                <!-- Insight 1 -->
+                <div class="insight-card p-4" data-category="creativity" data-tone="optimistic" data-favorite="false"
+                  data-new="true">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Creativity</span>
+                    <button class="favorite-btn" data-id="1">
+                      <i class="far fa-star"></i>
+                    </button>
+                  </div>
+                  <h4 class="font-medium mb-2">Idea Depth</h4>
+                  <p class="text-sm text-gray-300">Your ideas show great breadth but could benefit from deeper
+                    exploration.
+                    Try the "5 Whys" technique to dig deeper into concepts.</p>
+                  <div class="mt-3 flex justify-end space-x-2">
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--input-bg)] dismiss-btn">Dismiss</button>
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--primary)] save-btn">Save</button>
+                  </div>
+                </div>
+
+                <!-- Insight 2 -->
+                <div class="insight-card p-4" data-category="optimistic" data-tone="optimistic" data-favorite="true"
+                  data-new="false">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="tone-tag px-3 py-1 rounded-full text-xs font-medium">Optimistic</span>
+                    <button class="favorite-btn active" data-id="2">
+                      <i class="fas fa-star"></i>
+                    </button>
+                  </div>
+                  <h4 class="font-medium mb-2">Style Tip</h4>
+                  <p class="text-sm text-gray-300">Your optimistic tone resonates well with readers. Consider pairing it
+                    with more concrete examples to increase impact.</p>
+                  <div class="mt-3 flex justify-end space-x-2">
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--input-bg)] dismiss-btn">Dismiss</button>
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--primary)] save-btn">Save</button>
+                  </div>
+                </div>
+
+                <!-- Insight 3 -->
+                <div class="insight-card p-4" data-category="technology" data-tone="analytical" data-favorite="false"
+                  data-new="true">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Technology</span>
+                    <button class="favorite-btn" data-id="3">
+                      <i class="far fa-star"></i>
+                    </button>
+                  </div>
+                  <h4 class="font-medium mb-2">Tech Focus</h4>
+                  <p class="text-sm text-gray-300">Your tech-related ideas often connect with societal impacts. This
+                    interdisciplinary approach could be your unique angle.</p>
+                  <div class="mt-3 flex justify-end space-x-2">
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--input-bg)] dismiss-btn">Dismiss</button>
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--primary)] save-btn">Save</button>
+                  </div>
+                </div>
+
+                <!-- Insight 4 -->
+                <div class="insight-card p-4" data-category="society" data-tone="philosophical" data-favorite="false"
+                  data-new="false">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Society</span>
+                    <button class="favorite-btn" data-id="4">
+                      <i class="far fa-star"></i>
+                    </button>
+                  </div>
+                  <h4 class="font-medium mb-2">Social Patterns</h4>
+                  <p class="text-sm text-gray-300">You frequently notice patterns in social behavior. Try documenting
+                    these
+                    observations systematically to identify larger trends.</p>
+                  <div class="mt-3 flex justify-end space-x-2">
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--input-bg)] dismiss-btn">Dismiss</button>
+                    <button class="text-xs px-2 py-1 rounded bg-[var(--primary)] save-btn">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - 5. AI Tip Carousel -->
+          <div class="lg:col-span-1">
+            <div class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)] h-full flex flex-col">
+              <h3 class="text-xl font-semibold mb-6 flex items-center">
+                <i class="fas fa-robot mr-2 text-[var(--primary-light)]"></i> Mind Prompts for You
+              </h3>
+
+              <div class="flex-1 relative overflow-hidden">
+                <!-- Tip 1 -->
+                <div class="carousel-item active">
+                  <div class="bg-gradient-to-br from-[var(--dark)] to-[var(--darker)] p-5 rounded-lg mb-4">
+                    <div class="flex justify-between items-start mb-3">
+                      <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Society</span>
+                      <button class="favorite-btn" data-id="1">
+                        <i class="far fa-star"></i>
+                      </button>
+                    </div>
+                    <h4 class="font-medium mb-2">Community Connection</h4>
+                    <p class="text-sm text-gray-300">Write about a local issue you care about, then brainstorm three
+                      small
+                      actions you could take to make a difference.</p>
+                  </div>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="carousel-item">
+                  <div class="bg-gradient-to-br from-[var(--dark)] to-[var(--darker)] p-5 rounded-lg mb-4">
+                    <div class="flex justify-between items-start mb-3">
+                      <span class="tone-tag px-3 py-1 rounded-full text-xs font-medium">Philosophical</span>
+                      <button class="favorite-btn" data-id="2">
+                        <i class="far fa-star"></i>
+                      </button>
+                    </div>
+                    <h4 class="font-medium mb-2">Deep Question</h4>
+                    <p class="text-sm text-gray-300">Reflect on this: "If you could instill one value in every child,
+                      what
+                      would it be and why?" Explore both personal and societal impacts.</p>
+                  </div>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="carousel-item">
+                  <div class="bg-gradient-to-br from-[var(--dark)] to-[var(--darker)] p-5 rounded-lg mb-4">
+                    <div class="flex justify-between items-start mb-3">
+                      <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Creativity</span>
+                      <button class="favorite-btn" data-id="3">
+                        <i class="far fa-star"></i>
+                      </button>
+                    </div>
+                    <h4 class="font-medium mb-2">Idea Combination</h4>
+                    <p class="text-sm text-gray-300">Take two unrelated ideas from your recent thoughts and force a
+                      connection between them. What new concept emerges?</p>
+                  </div>
+                </div>
+
+                <!-- Tip 4 -->
+                <div class="carousel-item">
+                  <div class="bg-gradient-to-br from-[var(--dark)] to-[var(--darker)] p-5 rounded-lg mb-4">
+                    <div class="flex justify-between items-start mb-3">
+                      <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Emotions</span>
+                      <button class="favorite-btn" data-id="4">
+                        <i class="far fa-star"></i>
+                      </button>
+                    </div>
+                    <h4 class="font-medium mb-2">Emotional Mapping</h4>
+                    <p class="text-sm text-gray-300">Track your emotional responses throughout a day. What patterns
+                      emerge?
+                      How do they influence your creative output?</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center mt-6 pt-6 border-t border-[var(--input-br)]">
+                <button id="prev-tip"
+                  class="px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-[var(--input-br)] hover:bg-[var(--primary)] transition">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="flex space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-[var(--primary)]"></span>
+                  <span class="w-2 h-2 rounded-full bg-gray-600"></span>
+                  <span class="w-2 h-2 rounded-full bg-gray-600"></span>
+                  <span class="w-2 h-2 rounded-full bg-gray-600"></span>
+                </div>
+                <button id="next-tip"
+                  class="px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-[var(--input-br)] hover:bg-[var(--primary)] transition">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Floating Action Button -->
+      <div class="floating-btn pulse-animation" id="new-insight-btn">
+        <i class="fas fa-plus text-white text-xl"></i>
+      </div>
+
+
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 text-white py-12 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold mb-4 text-white">thoughty</h3>
+            <p class="text-gray-400 mb-4">
+              The gamified thought development platform for entrepreneurs and
+              creators.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Product</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Beta Program</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Guides</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 THOUGHTY. ALL RIGHTS RESERVED.</p>
+          <div class="mt-2 text-sm">
+            <a href="#" class="hover:text-white">PRIVACY POLICY</a> |
+            <a href="#" class="hover:text-white">TERMS OF SERVICE</a> |
+            <a href="#" class="hover:text-white">COOKIE POLICY</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <script src="./js/navbar.js"></script>
+  <script src="./js/mentor.js"></script>
+</body>
+
+</html>
