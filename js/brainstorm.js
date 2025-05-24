@@ -369,3 +369,395 @@ function remixPrompt() {
     addToHistory(remixedPrompt);
   }
 }
+
+// Add prompt to history
+function addToHistory(prompt) {
+  spinHistory.unshift({
+    prompt: prompt,
+    type: currentPromptType,
+    theme: currentTheme,
+    timestamp: new Date().toISOString(),
+  });
+
+  // Keep only last 10 items
+  if (spinHistory.length > 10) {
+    spinHistory = spinHistory.slice(0, 10);
+  }
+
+  // Save to localStorage
+  localStorage.setItem("spinHistory", JSON.stringify(spinHistory));
+
+  // Update history display
+  updateHistoryDisplay();
+}
+
+// Update history display
+function updateHistoryDisplay() {
+  historyList.innerHTML = "";
+
+  spinHistory.forEach((item, index) => {
+    const historyItem = document.createElement("div");
+    historyItem.className =
+      "history-item bg-input p-3 rounded-lg cursor-pointer";
+    historyItem.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold">${item.prompt}</p>
+                            <div class="flex items-center mt-1 text-xs text-gray-400">
+                                <span class="bg-${getColorForType(
+                                  item.type
+                                )} px-2 py-1 rounded-full mr-2">${
+      item.type
+    }</span>
+                                <span class="bg-${getColorForTheme(
+                                  item.theme
+                                )} px-2 py-1 rounded-full">${item.theme}</span>
+                            </div>
+                        </div>
+                        <button class="copy-history-btn text-gray-400 hover:text-light ml-2" data-prompt="${escapeHtml(
+                          item.prompt
+                        )}">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                `;
+
+    historyList.appendChild(historyItem);
+  });
+
+  // Add event listeners to copy buttons
+  document.querySelectorAll(".copy-history-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const prompt = btn.getAttribute("data-prompt");
+      navigator.clipboard.writeText(prompt);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Copied to clipboard!",
+        showConfirmButton: false,
+        timer: 1500,
+        toast: true,
+      });
+    });
+  });
+
+  // Add event listeners to history items
+  document.querySelectorAll(".history-item").forEach((item, index) => {
+    item.addEventListener("click", () => {
+      resultText.textContent = spinHistory[index].prompt;
+      resultContainer.classList.remove("hidden");
+      remixBtn.classList.remove("hidden");
+      saveBtn.classList.remove("hidden");
+      historyModal.classList.add("hidden");
+    });
+  });
+}
+
+// Helper function to get color for prompt type
+function getColorForType(type) {
+  switch (type) {
+    case "creative":
+      return "primary";
+    case "analytical":
+      return "secondary";
+    case "storytelling":
+      return "accent";
+    case "provocative":
+      return "red-600";
+    default:
+      return "gray-600";
+  }
+}
+
+// Helper function to get color for theme
+function getColorForTheme(theme) {
+  switch (theme) {
+    case "funny":
+      return "yellow-600";
+    case "techy":
+      return "primary";
+    case "deep":
+      return "secondary";
+    case "random":
+      return "accent";
+    default:
+      return "gray-600";
+  }
+}
+
+// Save prompt to "pods"
+function savePrompt() {
+  if (!resultText.textContent) return;
+
+  const prompt = {
+    text: resultText.textContent,
+    type: currentPromptType,
+    theme: currentTheme,
+    createdAt: new Date().toISOString(),
+  };
+
+  savedPrompts.unshift(prompt);
+  localStorage.setItem("savedPrompts", JSON.stringify(savedPrompts));
+
+  Swal.fire({
+    title: "Prompt Saved!",
+    text: "Your prompt has been added to your Pods.",
+    icon: "success",
+    confirmButtonText: "OK",
+  });
+}
+
+// Escape HTML for safe display
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Event Listeners
+spinBtn.addEventListener("click", spinWheel);
+remixBtn.addEventListener("click", remixPrompt);
+saveBtn.addEventListener("click", savePrompt);
+
+historyBtn.addEventListener("click", () => {
+  updateHistoryDisplay();
+  historyModal.classList.remove("hidden");
+});
+
+closeHistory.addEventListener("click", () => {
+  historyModal.classList.add("hidden");
+});
+
+clearHistory.addEventListener("click", () => {
+  spinHistory = [];
+  localStorage.setItem("spinHistory", JSON.stringify(spinHistory));
+  updateHistoryDisplay();
+});
+
+settingsBtn.addEventListener("click", () => {
+  settingsModal.classList.remove("hidden");
+});
+
+closeSettings.addEventListener("click", () => {
+  settingsModal.classList.add("hidden");
+});
+
+cloudSyncBtn.addEventListener("click", () => {
+  Swal.fire({
+    title: "Cloud Sync",
+    text: "This feature would connect to Firebase/Supabase in a production app.",
+    icon: "info",
+    confirmButtonText: "OK",
+  });
+});
+
+exportBtn.addEventListener("click", () => {
+  const data = {
+    history: spinHistory,
+    savedPrompts: savedPrompts,
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "prompt-wheel-data.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+importBtn.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      try {
+        const data = JSON.parse(event.target.result);
+
+        if (data.history) {
+          spinHistory = data.history;
+          localStorage.setItem("spinHistory", JSON.stringify(spinHistory));
+        }
+
+        if (data.savedPrompts) {
+          savedPrompts = data.savedPrompts;
+          localStorage.setItem("savedPrompts", JSON.stringify(savedPrompts));
+        }
+
+        Swal.fire({
+          title: "Import Successful!",
+          text: "Your data has been imported.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        updateHistoryDisplay();
+      } catch (err) {
+        Swal.fire({
+          title: "Import Failed",
+          text: "The file could not be processed.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    };
+
+    reader.readAsText(file);
+  };
+
+  input.click();
+});
+
+segmentCount.addEventListener("input", () => {
+  segments = parseInt(segmentCount.value);
+  segmentCountValue.textContent = segments;
+
+  initWheel();
+});
+
+spinDuration.addEventListener("input", () => {
+  duration = parseInt(spinDuration.value);
+  spinDurationValue.textContent = duration;
+});
+
+customizeBtn.addEventListener("click", () => {
+  if (!resultText.textContent) {
+    Swal.fire({
+      title: "No Prompt",
+      text: "Please spin the wheel first to get a prompt to customize.",
+      icon: "warning",
+      confirmButtonText: "OK",
+    });
+    return;
+  }
+
+  promptText.value = resultText.textContent;
+  customizeModal.classList.remove("hidden");
+});
+
+closeCustomize.addEventListener("click", () => {
+  customizeModal.classList.add("hidden");
+});
+
+cancelCustomize.addEventListener("click", () => {
+  customizeModal.classList.add("hidden");
+});
+
+saveCustomPrompt.addEventListener("click", () => {
+  let customizedPrompt = promptText.value;
+
+  // Apply adjective if selected
+  if (adjectiveSelect.value) {
+    const adjOptions = adjectives[adjectiveSelect.value];
+    const randomAdj = adjOptions[Math.floor(Math.random() * adjOptions.length)];
+    customizedPrompt = `${randomAdj} ${customizedPrompt.toLowerCase()}`;
+  }
+
+  // Apply format if changed
+  if (formatSelect.value !== "question") {
+    switch (formatSelect.value) {
+      case "statement":
+        customizedPrompt = customizedPrompt.replace(/\?$/, ".");
+        break;
+      case "list":
+        customizedPrompt = `List 5 aspects of: ${customizedPrompt.replace(
+          /\?$/,
+          ""
+        )}`;
+        break;
+      case "scenario":
+        customizedPrompt = `Imagine a scenario where ${customizedPrompt
+          .toLowerCase()
+          .replace(/\?$/, "")}. Describe it in detail.`;
+        break;
+    }
+  }
+
+  // Update result
+  resultText.textContent = customizedPrompt;
+  customizeModal.classList.add("hidden");
+
+  // Add to history
+  addToHistory(customizedPrompt);
+});
+
+// Prompt type buttons
+promptTypeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentPromptType = btn.getAttribute("data-type");
+
+    // Update active state
+    promptTypeBtns.forEach((b) => b.classList.remove("ring-2", "ring-white"));
+    btn.classList.add("ring-2", "ring-white");
+  });
+});
+// Theme chips
+themeChips.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    currentTheme = chip.getAttribute("data-theme");
+
+    // Update active state
+    themeChips.forEach((c) =>
+      c.classList.remove("active", "ring-2", "ring-white")
+    );
+    chip.classList.add("active", "ring-2", "ring-white");
+  });
+});
+
+// Initialize
+initWheel();
+
+// Set first prompt type and theme as active
+if (promptTypeBtns.length > 0) {
+  promptTypeBtns[0].classList.add("ring-2", "ring-white");
+}
+
+if (themeChips.length > 0) {
+  themeChips[themeChips.length - 1].classList.add(
+    "active",
+    "ring-2",
+    "ring-white"
+  );
+}
+
+// Optional: Highlight the selected segment
+function highlightSegment(segmentIndex) {
+  const centerX = wheelCanvas.width / 2;
+  const centerY = wheelCanvas.height / 2;
+  const radius = Math.min(wheelCanvas.width, wheelCanvas.height) / 2;
+  const segmentAngle = (2 * Math.PI) / segments;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(centerX, centerY);
+  ctx.arc(
+    centerX,
+    centerY,
+    radius,
+    segmentIndex * segmentAngle,
+    (segmentIndex + 1) * segmentAngle
+  );
+  ctx.closePath();
+  ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+  ctx.fill();
+  ctx.restore();
+}
+
+// Event Listeners
+spinBtn.addEventListener("click", spinWheel);
+
+initWheel();
