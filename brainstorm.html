@@ -76,9 +76,9 @@
                 class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
                 Mind Mentor
               </a>
-              <a href="/info.html"
+              <a href="/about.html"
                 class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
-                Info
+                About
               </a>
 
               <!-- signin & sign up btns -->
@@ -99,14 +99,17 @@
               </div>
 
               <!-- notification center -->
-              <div class="flex items-center space-x-4 notif-center">
-                <div class="relative">
-                  <div
-                    class="w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
-                    <i class="fa-solid fa-bell  text-primary-light"></i>
+              <div
+                class="notification-container w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-bell  text-primary-light notification-bell"></i>
+
+                <div class="notification-badge" style="display: none;"></div>
+                <div class="notification-dropdown">
+                  <div class="notification-header">
+                    <span>Notifications</span>
+                    <span class="notification-clear">Clear All</span>
                   </div>
-                  <span
-                    class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-accent flex items-center justify-center text-xs">3</span>
+                  <div class="notification-list"></div>
                 </div>
               </div>
 
@@ -187,6 +190,8 @@
           </div>
         </div>
     </nav>
+
+
     <main class="pt-[5rem]">
 
       <div class="container mx-auto px-4 py-8">

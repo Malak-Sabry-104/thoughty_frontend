@@ -137,3 +137,155 @@ if (authMode === AUTH_MODES.SIGNED_IN) {
     headerAvatar.src = userData.avatar;
   }
 }
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+      // DOM Elements
+      const bellIcon = document.querySelector('.notification-bell');
+      const badge = document.querySelector('.notification-badge');
+      const dropdown = document.querySelector('.notification-dropdown');
+      const notificationList = document.querySelector('.notification-list');
+      const clearButton = document.querySelector('.notification-clear');
+
+      // Notification data
+      let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+      let unseenCount = parseInt(localStorage.getItem('unseenCount')) || 0;
+
+      // Initialize the UI
+      updateBadge();
+      renderNotifications();
+
+      // Toggle dropdown on bell click
+      bellIcon.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+
+        // Mark all notifications as seen when dropdown is opened
+        if (dropdown.classList.contains('show')) {
+          markAllAsSeen();
+        }
+      });
+
+      // Clear all notifications
+      clearButton.addEventListener('click', function () {
+        notifications = [];
+        unseenCount = 0;
+        saveToLocalStorage();
+        renderNotifications();
+        updateBadge();
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function () {
+        dropdown.classList.remove('show');
+      });
+
+      // Prevent dropdown from closing when clicking inside
+      dropdown.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+
+      // Function to add a new notification (for demonstration)
+      function addNotification(type, message) {
+        const newNotification = {
+          id: Date.now(),
+          type: type,
+          message: message,
+          timestamp: new Date(),
+          isRead: false
+        };
+
+        notifications.unshift(newNotification);
+        unseenCount++;
+        saveToLocalStorage();
+        renderNotifications();
+        updateBadge();
+      }
+
+      // Function to render notifications
+      function renderNotifications() {
+        if (notifications.length === 0) {
+          notificationList.innerHTML = '<div class="notification-empty">No notifications yet</div>';
+          return;
+        }
+
+        notificationList.innerHTML = notifications.map(notification => `
+                    <div class="notification-item ${notification.isRead ? 'read' : 'unread'}" data-id="${notification.id}">
+                        <div><strong>${notification.type}</strong></div>
+                        <div>${notification.message}</div>
+                        <div class="notification-time">${formatTime(notification.timestamp)}</div>
+                    </div>
+                `).join('');
+
+        // Add click handler to mark individual notifications as read
+        document.querySelectorAll('.notification-item').forEach(item => {
+          item.addEventListener('click', function () {
+            const id = parseInt(this.getAttribute('data-id'));
+            markAsRead(id);
+          });
+        });
+      }
+
+      // Function to mark a notification as read
+      function markAsRead(id) {
+        const notification = notifications.find(n => n.id === id);
+        if (notification && !notification.isRead) {
+          notification.isRead = true;
+          unseenCount--;
+          saveToLocalStorage();
+          renderNotifications();
+          updateBadge();
+        }
+      }
+
+      // Function to mark all notifications as seen
+      function markAllAsSeen() {
+        if (unseenCount > 0) {
+          notifications.forEach(notification => {
+            notification.isRead = true;
+          });
+          unseenCount = 0;
+          saveToLocalStorage();
+          renderNotifications();
+          updateBadge();
+        }
+      }
+
+      // Function to update the badge
+      function updateBadge() {
+        if (unseenCount > 0) {
+          badge.style.display = 'flex';
+          badge.textContent = unseenCount > 9 ? '9+' : unseenCount;
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+
+      // Function to save data to localStorage
+      function saveToLocalStorage() {
+        localStorage.setItem('notifications', JSON.stringify(notifications));
+        localStorage.setItem('unseenCount', unseenCount.toString());
+      }
+
+      // Helper function to format time
+      function formatTime(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) +
+          ' · ' + date.toLocaleDateString();
+      }
+
+      // Demo: Add some sample notifications after a delay
+      setTimeout(() => {
+        addNotification('New Comment', 'John Doe commented on your post');
+      }, 1000);
+
+      setTimeout(() => {
+        addNotification('Badge Earned', 'You earned the "Contributor" badge');
+      }, 2000);
+
+      setTimeout(() => {
+        addNotification('System Update', 'New features available in your dashboard');
+      }, 3000);
+
+      // You can call addNotification() whenever you get a real notification
+    });
