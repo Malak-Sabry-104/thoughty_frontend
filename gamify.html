@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoughty | Gamified Thought Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="./css/gamify.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8b5cf6',
+            'primary-light': '#a78bfa',
+            secondary: '#10b981',
+            accent: '#ec4899',
+            dark: '#0f172a',
+            darker: '#020617',
+            light: '#f8fafc',
+            'card-bg': 'rgba(15, 23, 42, 0.8)',
+            'input-br': 'rgba(25, 39, 70, 0.8)',
+            'input-bg': 'rgba(19, 28, 47, 0.8)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen">
+  <div id="gamify" class="page">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="/">
+              <img src="./assests/imgs/temt logo.jpg" class="w-10 mx-3">
+            </a>
+            <span class="text-xl font-bold text-white">Thoughty</span>
+          </div>
+          <div class="md:hidden">
+            <button id="mobile-menu-button"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-center space-x-8 ">
+
+              <!-- nav-links -->
+              <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Explore
+              </a>
+              <a href="/brainstorm.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Brainstorm
+              </a>
+              <a href="./battles.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Battles
+              </a>
+              <a href="/mentor.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Mind Mentor
+              </a>
+              <a href="/about.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                About
+              </a>
+
+              <!-- signin & sign up btns -->
+              <a href="/signup.html?request=signin"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In
+              </a>
+              <a href="/signup.html?request=signup"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-user-plus mr-2"></i> Sign Up
+              </a>
+
+              <!-- Hover-Activated Gradient Border Button -->
+              <div class="guest-btn-container">
+                <a href="/guest" class="guest-btn">
+                  <i class="fa-solid fa-user-clock mr-2"></i> guest mode
+                </a>
+              </div>
+
+              <!-- notification center -->
+              <div
+                class="notification-container w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-bell  text-primary-light notification-bell"></i>
+
+                <div class="notification-badge" style="display: none;"></div>
+                <div class="notification-dropdown">
+                  <div class="notification-header">
+                    <span>Notifications</span>
+                    <span class="notification-clear">Clear All</span>
+                  </div>
+                  <div class="notification-list"></div>
+                </div>
+              </div>
+
+              <!-- create pod button -->
+              <a href="./pods.html?new_pod_popup=true" class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white
+                 pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-plus mr-2"></i>
+                New Pod
+              </a>
+
+              <!-- dropdown user  -->
+              <div class="profile-dropdown">
+                <button class="avatar-btn">
+                  <img src="./assests/imgs/avatar-user-vector.jpg" class="avatar-img" alt="Profile">
+                </button>
+
+                <div class="dropdown-content">
+                  <div class="dropdown-header">
+                    <img src="./assests/imgs/avatar-user-vector.jpg" class="header-avatar" alt="Profile">
+                    <div class="user-info">
+                      <div class="user-name">Alexandra Chen</div>
+                      <div class="user-email">alex44@gmail.com</div>
+                    </div>
+                  </div>
+
+                  <a href="./dashboard.html" class="dropdown-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  <a href="./pods.html" class="dropdown-item">
+                    <i class="fas fa-brain"></i>
+                    <span>My ThoughtPods</span>
+                  </a>
+                  <a href="./gamify.html" class="dropdown-item">
+                    <i class="fa-solid fa-gamepad"></i> <span>Gamify</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                  </a>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+            <a href="#features"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              FEATURES
+            </a>
+            <a href="#how-it-works"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">HOW
+              IT WORKS
+            </a>
+            <a href="#testimonials"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              TESTIMONIALS
+            </a>
+            <a href="#pricing"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              PRICING
+            </a>
+            <a href="#cta"
+              class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90">
+              JOIN BETA
+            </a>
+          </div>
+        </div>
+    </nav>
+
+
+    <main class="pt-[5rem]">
+      <div class="container mx-auto px-4 py-8">
+
+        <!-- Token Wallet -->
+        <div class="card-bg rounded-xl p-6 mb-8 border border-gray-800">
+          <h2 class="text-2xl font-semibold mb-4 text-primary-light">Your Token Wallet</h2>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center token-animation">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-300">Total Tokens</p>
+                <p class="text-3xl font-bold" id="token-count">1,250</p>
+                <div class="flex items-center mt-1">
+                  <div class="progress-bar w-3/4"></div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="input-bg hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white px-6 py-3 rounded-lg font-medium transition-all group">
+              <span class="group-hover:text-white">Redeem Rewards</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Badge Collection -->
+        <div class="card-bg rounded-xl p-6 mb-8 border border-gray-800">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-semibold text-primary-light">Badge Collection</h2>
+            <div class="text-sm bg-gradient-to-r from-primary/20 to-accent/20 px-3 py-1 rounded-full">
+              <span class="text-secondary-light">5/12</span> badges unlocked
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="badge-grid">
+            <!-- Badges will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="card-bg rounded-xl p-6 border border-gray-800">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-semibold text-primary-light">Leaderboard</h2>
+            <div class="flex space-x-2">
+              <button id="sort-asc"
+                class="input-bg hover:bg-secondary hover:text-white px-3 py-1 rounded text-sm transition-all">
+                Low to High
+              </button>
+              <button id="sort-desc"
+                class="input-bg hover:bg-accent hover:text-white px-3 py-1 rounded text-sm transition-all">
+                High to Low
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-3" id="leaderboard">
+            <!-- Leaderboard items will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge Modal -->
+      <div id="badge-modal"
+        class="fixed inset-0 flex items-center justify-center z-50 modal opacity-0 pointer-events-none">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div
+          class="card-bg rounded-xl p-6 max-w-md w-full mx-4 relative z-10 transform transition-all scale-95 border border-gray-700">
+          <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="flex flex-col items-center">
+            <div id="modal-badge" class="w-24 h-24 mb-4"></div>
+            <h3 id="modal-title" class="text-xl font-bold mb-2"></h3>
+            <p id="modal-description" class="text-center mb-4"></p>
+            <div id="modal-requirements" class="w-full bg-dark rounded-lg p-4 border border-gray-700"></div>
+            <div id="modal-progress" class="w-full mt-4"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 text-white py-12 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold mb-4 text-white">thoughty</h3>
+            <p class="text-gray-400 mb-4">
+              The gamified thought development platform for entrepreneurs and
+              creators.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Product</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Beta Program</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Guides</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 THOUGHTY. ALL RIGHTS RESERVED.</p>
+          <div class="mt-2 text-sm">
+            <a href="#" class="hover:text-white">PRIVACY POLICY</a> |
+            <a href="#" class="hover:text-white">TERMS OF SERVICE</a> |
+            <a href="#" class="hover:text-white">COOKIE POLICY</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/navbar.js"></script>
+  <script src="./js/gamify.js"></script>
+</body>
+
+</html>
