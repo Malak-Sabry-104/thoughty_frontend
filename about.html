@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoughty | Gamified Thought Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="./css/about.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8b5cf6',
+            'primary-light': '#a78bfa',
+            secondary: '#10b981',
+            accent: '#ec4899',
+            dark: '#0f172a',
+            darker: '#020617',
+            light: '#f8fafc',
+            'card-bg': 'rgba(15, 23, 42, 0.8)',
+            'input-br': 'rgba(25, 39, 70, 0.8)',
+            'input-bg': 'rgba(19, 28, 47, 0.8)',
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <div id="about" class="page">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="/">
+              <img src="./assests/imgs/temt logo.jpg" class="w-10 mx-3">
+            </a>
+            <span class="text-xl font-bold text-white">Thoughty</span>
+          </div>
+          <div class="md:hidden">
+            <button id="mobile-menu-button"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-center space-x-8 ">
+
+              <!-- nav-links -->
+              <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Explore
+              </a>
+              <a href="/brainstorm.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Brainstorm
+              </a>
+              <a href="./battles.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Battles
+              </a>
+              <a href="/mentor.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                Mind Mentor
+              </a>
+              <a href="/about.html"
+                class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase">
+                About
+              </a>
+
+              <!-- signin & sign up btns -->
+              <a href="/signup.html?request=signin"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In
+              </a>
+              <a href="/signup.html?request=signup"
+                class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-user-plus mr-2"></i> Sign Up
+              </a>
+
+              <!-- Hover-Activated Gradient Border Button -->
+              <div class="guest-btn-container">
+                <a href="/guest" class="guest-btn">
+                  <i class="fa-solid fa-user-clock mr-2"></i> guest mode
+                </a>
+              </div>
+
+              <!-- notification center -->
+              <div
+                class="notification-container w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-bell  text-primary-light notification-bell"></i>
+
+                <div class="notification-badge" style="display: none;"></div>
+                <div class="notification-dropdown">
+                  <div class="notification-header">
+                    <span>Notifications</span>
+                    <span class="notification-clear">Clear All</span>
+                  </div>
+                  <div class="notification-list"></div>
+                </div>
+              </div>
+
+              <!-- create pod button -->
+              <a href="./pods.html?new_pod_popup=true" class="btn-hover inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white
+                 pink-gradient-bg shadow-sm uppercase">
+                <i class="fa-solid fa-plus mr-2"></i>
+                New Pod
+              </a>
+
+              <!-- dropdown user  -->
+              <div class="profile-dropdown">
+                <button class="avatar-btn">
+                  <img src="./assests/imgs/avatar-user-vector.jpg" class="avatar-img" alt="Profile">
+                </button>
+
+                <div class="dropdown-content">
+                  <div class="dropdown-header">
+                    <img src="./assests/imgs/avatar-user-vector.jpg" class="header-avatar" alt="Profile">
+                    <div class="user-info">
+                      <div class="user-name">Alexandra Chen</div>
+                      <div class="user-email">alex44@gmail.com</div>
+                    </div>
+                  </div>
+
+                  <a href="./dashboard.html" class="dropdown-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  <a href="./pods.html" class="dropdown-item">
+                    <i class="fas fa-brain"></i>
+                    <span>My ThoughtPods</span>
+                  </a>
+                  <a href="./gamify.html" class="dropdown-item">
+                    <i class="fa-solid fa-gamepad"></i> <span>Gamify</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                  </a>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+            <a href="#features"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              FEATURES
+            </a>
+            <a href="#how-it-works"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">HOW
+              IT WORKS
+            </a>
+            <a href="#testimonials"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              TESTIMONIALS
+            </a>
+            <a href="#pricing"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">
+              PRICING
+            </a>
+            <a href="#cta"
+              class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90">
+              JOIN BETA
+            </a>
+          </div>
+        </div>
+    </nav>
+    <main class="pt-[5rem]">
+      <!-- hero section -->
+      <section id="hero" class="grid-pattern">
+        <div class="left-part">
+          <img src="./assests/imgs/temt logo.jpg" alt="logo">
+        </div>
+        <div class="right-part">
+          <h1 class="gradient-text">YOUR SPACE TO THINK FREELY & PLAYFULLY</h1>
+          <h4>We help thinkers like you explore and express ideas with creativity, and depth...</h4>
+          <p>Our mission is to transform thinking into an interactive journey — blending creativity, structured tools,
+            and gamified challenges — so you can evolve your thoughts, battle perspectives, and grow alongside a
+            community of curious minds.</p>
+          <button
+            class="btn-hover inline-flex items-center justify-center px-6 py-3 my-3 border border-transparent text-base font-medium rounded-md text-white pink-gradient-bg shadow-lg hover:opacity-90">Explore
+          </button>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section class="py-20 bg-gradient-to-b from-[var(--darker)] to-[var(--dark)]">
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+              <h2 class="text-3xl md:text-4xl font-bold mb-6">Who We <span class="gradient-text">Are</span></h2>
+              <p class="text-lg opacity-90 mb-6"> Thoughty is a creative digital platform designed to help thinkers like
+                you grow, evolve, and explore bold ideas. From Thought Pods to Mind Battles and AI-powered tools, we’ve
+                built a space where ideas are more than posts — they’re living conversations.</p>
+              <p class="text-lg opacity-90 mb-8">We're just a two-person team — one frontend, one backend — who built
+                MindVerse from scratch with nothing but curiosity, creativity, and a shared vision. No big studio. No
+                investors. Just heart, code, and a passion for meaningful expression.</p>
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)] stats-card transition-all duration-300">
+                  <h3 class="text-3xl font-bold text-[var(--primary-light)] mb-2">150+</h3>
+                  <p class="opacity-80">Projects Completed</p>
+                </div>
+                <div
+                  class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)] stats-card transition-all duration-300">
+                  <h3 class="text-3xl font-bold text-[var(--secondary)] mb-2">40+</h3>
+                  <p class="opacity-80">Team Members</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/2 relative">
+              <div class="bg-[var(--primary)] absolute -top-6 -left-6 w-full h-full rounded-2xl -z-10"></div>
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Our Team" class="rounded-2xl shadow-2xl w-full h-auto">
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Team Section -->
+      <section class="py-20 bg-[var(--dark)]">
+        <div class="container mx-auto px-6 flex flex-col items-center ">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet The <span class="gradient-text">Team</span></h2>
+            <p class="max-w-2xl mx-auto text-lg opacity-90">The brilliant minds behind our success story.</p>
+          </div>
+
+          <div class="flex  justify-center gap-[50px]">
+            <div
+              class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)] team-card transition-all duration-300 w-[350px]">
+              <div
+                class="w-full h-64 bg-gradient-to-br from-[var(--secondary)] to-[var(--primary)] rounded-lg mb-4 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
+                  class="w-full h-full object-cover">
+              </div>
+              <h3 class="text-xl font-bold">Malak Sabry</h3>
+              <p class="text-[var(--secondary)] mb-3">CTO</p>
+              <p class="text-sm opacity-90 mb-4">Tech wizard specializing in AI, blockchain, and scalable architectures.
+              </p>
+              <div class="flex space-x-3">
+                <a href="#" class="text-[var(--light)] hover:text-[var(--secondary)]"><i
+                    class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-[var(--light)] hover:text-[var(--secondary)]"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-[var(--light)] hover:text-[var(--secondary)]"><i
+                    class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--input-br)] team-card transition-all duration-300 w-[350px]">
+              <div
+                class="w-full h-64 bg-gradient-to-br from-[var(--secondary)] to-[var(--primary)] rounded-lg mb-4 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
+                  class="w-full h-full object-cover">
+              </div>
+              <h3 class="text-xl font-bold">Khaled Muhammad</h3>
+              <p class="text-[var(--secondary)] mb-3">CTO</p>
+              <p class="text-sm opacity-90 mb-4">Tech wizard specializing in AI, blockchain, and scalable architectures.
+              </p>
+              <div class="flex space-x-3">
+                <a href="#" class="text-[var(--light)] hover:text-[var(--secondary)]"><i
+                    class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-[var(--light)] hover:text-[var(--secondary)]"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-[var(--light)] hover:text-[var(--secondary)]"><i
+                    class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </section>
+      <!-- contactUs section -->
+      <section class="flex flex-col justify-center items-center ">
+        <div class="max-w-2xl w-full relative z-10">
+          <div
+            class="backdrop-blur-sm bg-[var(--card-bg)] rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-[1.005]">
+            <div class="relative">
+              <!-- Animated header -->
+              <div class="p-8 sm:p-10">
+                <div class="flex items-center justify-center mb-8">
+                  <div class="relative group">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[var(--primary)] opacity-20 absolute -inset-2 blur-md group-hover:opacity-30 transition-all duration-300">
+                    </div>
+                    <div
+                      class="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] flex items-center justify-center text-white glow hover:rotate-12 transition-transform duration-300 cursor-pointer tooltip">
+                      <i class="fas fa-paper-plane text-2xl"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <h1
+                  class="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-[var(--primary-light)] to-[var(--accent)] bg-clip-text text-transparent">
+                  Contact Us
+                </h1>
+                <p class="text-center text-gray-300 mb-8">
+                  Have questions? <span
+                    class="inline-block hover:scale-110 transition-transform duration-200 cursor-default"
+                    id="randomEmoji">😊</span> Fill out the form below
+                </p>
+
+                <form id="contactForm" class="space-y-6">
+                  <div class="relative group">
+                    <input type="text" id="name"
+                      class="input-field w-full px-4 py-3 bg-[var(--input-bg)] border border-[var(--input-br)] rounded-lg text-white placeholder-transparent focus:input-focus transition-all duration-300 group-hover:border-[var(--primary-light)]"
+                      placeholder="John Doe" required>
+                    <label for="name"
+                      class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      Full Name <span class="text-[var(--accent)]">*</span>
+                    </label>
+                    <div
+                      class="absolute right-3 top-3.5 text-gray-400 group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      <i class="fas fa-user"></i>
+                    </div>
+                  </div>
+
+                  <div class="relative group">
+                    <input type="email" id="email"
+                      class="input-field w-full px-4 py-3 bg-[var(--input-bg)] border border-[var(--input-br)] rounded-lg text-white placeholder-transparent focus:input-focus transition-all duration-300 group-hover:border-[var(--primary-light)]"
+                      placeholder="john@example.com" required>
+                    <label for="email"
+                      class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      Email Address <span class="text-[var(--accent)]">*</span>
+                    </label>
+                    <div
+                      class="absolute right-3 top-3.5 text-gray-400 group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
+
+                  <div class="relative group">
+                    <input type="tel" id="phone"
+                      class="input-field w-full px-4 py-3 bg-[var(--input-bg)] border border-[var(--input-br)] rounded-lg text-white placeholder-transparent focus:input-focus transition-all duration-300 group-hover:border-[var(--primary-light)]"
+                      placeholder="+1 (555) 123-4567">
+                    <label for="phone"
+                      class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      Phone Number (optional)
+                    </label>
+                    <div
+                      class="absolute right-3 top-3.5 text-gray-400 group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      <i class="fas fa-phone"></i>
+                    </div>
+                  </div>
+
+                  <div class="relative group">
+                    <select id="subject"
+                      class="input-field w-full px-4 py-3 bg-[var(--input-bg)] border border-[var(--input-br)] rounded-lg text-white appearance-none focus:input-focus transition-all duration-300 group-hover:border-[var(--primary-light)] cursor-pointer">
+                      <option value="" disabled selected></option>
+                      <option value="support">Support</option>
+                      <option value="sales">Sales</option>
+                      <option value="feedback">Feedback</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <label for="subject"
+                      class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      Subject <span class="text-[var(--accent)]">*</span>
+                    </label>
+                    <div
+                      class="absolute right-3 top-3.5 text-gray-400 group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+
+                  <div class="relative group">
+                    <textarea id="message" rows="4"
+                      class="input-field w-full px-4 py-3 bg-[var(--input-bg)] border border-[var(--input-br)] rounded-lg text-white placeholder-transparent focus:input-focus transition-all duration-300 group-hover:border-[var(--primary-light)]"
+                      placeholder="Your message here..." required></textarea>
+                    <label for="message"
+                      class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      Your Message <span class="text-[var(--accent)]">*</span>
+                    </label>
+                    <div
+                      class="absolute right-3 top-3.5 text-gray-400 group-hover:text-[var(--primary-light)] transition-colors duration-300">
+                      <i class="fas fa-comment-dots"></i>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center group">
+                    <input type="checkbox" id="consent"
+                      class="w-4 h-4 rounded bg-[var(--input-bg)] border-[var(--input-br)] focus:ring-[var(--primary)] focus:ring-offset-[var(--dark)] group-hover:border-[var(--primary-light)] transition-colors duration-300 cursor-pointer"
+                      required>
+                    <label for="consent"
+                      class="ml-2 text-sm text-gray-300 group-hover:text-[var(--primary-light)] transition-colors duration-300 cursor-pointer">
+                      I agree to the <a href="#" class="text-[var(--primary-light)] hover:underline">privacy policy</a>
+                    </label>
+                  </div>
+
+                  <div class="relative">
+                    <button type="submit"
+                      class="btn-primary w-full py-3 px-4 rounded-lg text-white font-medium flex items-center justify-center space-x-2 ripple relative overflow-hidden transition-all duration-300"
+                      id="submitBtn">
+                      <span id="submitText">Send Message</span>
+                      <i class="fas fa-paper-plane animate-pulse-slow" id="submitIcon"></i>
+                      <div class="progress-bar"></div>
+                    </button>
+                    <div id="submitStatus"
+                      class="hidden absolute -bottom-6 left-0 right-0 text-center text-sm text-[var(--secondary)]">
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div
+                class="px-8 py-4 bg-[var(--dark)] text-center text-gray-400 text-sm flex items-center justify-center space-x-2">
+                <i class="fas fa-clock"></i>
+                <p>We typically respond within 24 hours</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="successMessage"
+            class="hidden mt-6 backdrop-blur-sm bg-[var(--card-bg)] rounded-xl p-6 border border-[var(--secondary)] bounce-in">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 rounded-full bg-[var(--secondary)] bg-opacity-20 flex items-center justify-center">
+                  <i class="fas fa-check text-[var(--secondary)]"></i>
+                </div>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-lg font-medium text-[var(--light)]">Message sent successfully!</h3>
+                <p class="mt-1 text-sm text-gray-300">Thank you for contacting us. We'll get back to you soon.</p>
+                <button id="resetForm"
+                  class="mt-3 text-sm text-[var(--primary-light)] hover:underline flex items-center group">
+                  <span>Send another message</span>
+                  <i class="fas fa-redo ml-1 group-hover:rotate-180 transition-transform duration-300"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 text-white py-12 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold mb-4 text-white">thoughty</h3>
+            <p class="text-gray-400 mb-4">
+              The gamified thought development platform for entrepreneurs and
+              creators.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Product</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Beta Program</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-white">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Guides</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 THOUGHTY. ALL RIGHTS RESERVED.</p>
+          <div class="mt-2 text-sm">
+            <a href="#" class="hover:text-white">PRIVACY POLICY</a> |
+            <a href="#" class="hover:text-white">TERMS OF SERVICE</a> |
+            <a href="#" class="hover:text-white">COOKIE POLICY</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="./js/navbar.js"></script>
+  <script src="./js/about.js"></script>
+</body>
+
+</html>
